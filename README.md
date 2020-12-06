@@ -6,7 +6,7 @@ Java solutions for [Advent of Code].
 | Day | Challenge | Solution |
 | ------ | ------ | ------ |
 | 1 | [Report Repair][2020 day 01] | - |
-| 2 | [Password Philosophy][2020 day 02] | - |
+| 2 | [Password Philosophy][2020 day 02] | [PasswordPhilosophy.java](year2020/day02/PasswordPhilosophy.java) |
 | 3 | [Toboggan Trajectory][2020 day 03] | [TobogganTrajectory.java](year2020/day03/TobogganTrajectory.java) |
 | 4 | [Passport Processing][2020 day 04] | [PassportProcessing.java](year2020/day04/PassportProcessing.java) |
 | 5 | [Binary Boarding][2020 day 04] | [BinaryBoarding.java](year2020/day05/BinaryBoarding.java) |
@@ -40,9 +40,3 @@ Java solutions for [Advent of Code].
    [2020 day 23]: <https://adventofcode.com/2020/day/23>
    [2020 day 24]: <https://adventofcode.com/2020/day/24>
    [2020 day 25]: <https://adventofcode.com/2020/day/25>
-   [2020 day 26]: <https://adventofcode.com/2020/day/26>
-   [2020 day 27]: <https://adventofcode.com/2020/day/27>
-   [2020 day 28]: <https://adventofcode.com/2020/day/28>
-   [2020 day 29]: <https://adventofcode.com/2020/day/29>
-   [2020 day 30]: <https://adventofcode.com/2020/day/30>
-   [2020 day 31]: <https://adventofcode.com/2020/day/31>
