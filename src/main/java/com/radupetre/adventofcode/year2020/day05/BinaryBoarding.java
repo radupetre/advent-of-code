@@ -29,8 +29,8 @@ public class BinaryBoarding extends AbstractAdventSolution {
         .boxed()
         .collect(toList());
 
-  log.info(String.format("Highest seatId: %s", getHighestSeatId(seatIds)));
-  log.info(String.format("Missing seatId: %s", getMissingSeatId(seatIds)));
+    log.info(String.format("Highest seatId: %s", getHighestSeatId(seatIds)));
+    log.info(String.format("Missing seatId: %s", getMissingSeatId(seatIds)));
   }
 
   private Integer getMissingSeatId(List<Integer> seatIds) {
@@ -58,7 +58,7 @@ public class BinaryBoarding extends AbstractAdventSolution {
 
   private int calculateSeatId(String encodedBoardingPass) {
     String binaryBoardingPass = decodeToBinary(encodedBoardingPass);
-    return Integer.parseInt(binaryBoardingPass,2);
+    return Integer.parseInt(binaryBoardingPass, 2);
   }
 
   private String decodeToBinary(String encodedBoardingPass) {

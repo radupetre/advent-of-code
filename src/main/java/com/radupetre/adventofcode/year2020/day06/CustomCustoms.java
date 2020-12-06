@@ -31,7 +31,7 @@ public class CustomCustoms extends AbstractAdventSolution {
     final List<String> declarationBatches = getBatches(declarations, BATCH_SEPARATOR);
 
     log.info(format("Sum of distinct answers: %s",
-        countDistinctAnswersInDeclarationBatch(declarationBatches)));
+        countDistinctAnswersInDeclarationBatches(declarationBatches)));
     log.info(format("Sum of common answers: %s",
         countCommonAnswersInDeclarationBatches(declarationBatches)));
   }
@@ -60,7 +60,7 @@ public class CustomCustoms extends AbstractAdventSolution {
         .collect(toSet());
   }
 
-  private long countDistinctAnswersInDeclarationBatch(List<String> declarationBatches) {
+  private long countDistinctAnswersInDeclarationBatches(List<String> declarationBatches) {
     return declarationBatches.stream()
         .mapToLong(this::countDistinctAnswersInDeclarationBatch)
         .sum();
