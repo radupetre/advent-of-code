@@ -13,7 +13,9 @@ public class AdventOfCodeApplication {
 		final ConfigurableApplicationContext context = SpringApplication
 				.run(AdventOfCodeApplication.class, args);
 		SolutionOrchestrator solutionOrchestrator = context.getBean(SolutionOrchestrator.class);
-		solutionOrchestrator.runSingleSolution(2020, 4);
+
+		// solutionOrchestrator.runSingleSolution(2020, 4);
+		solutionOrchestrator.runSolutions();
 	}
 
 }
