@@ -1,6 +1,6 @@
 package com.radupetre.adventofcode.year2020.day05;
 
-import static com.radupetre.adventofcode.utils.StringUtils.streamLines;
+import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
@@ -23,7 +23,8 @@ public class BinaryBoarding extends AbstractAdventSolution {
 
   @Override
   public void solve(String boardingPasses) {
-    final List<Integer> seatIds = streamLines(boardingPasses)
+    final List<Integer> seatIds = getLines(boardingPasses)
+        .stream()
         .mapToInt(this::calculateSeatId)
         .boxed()
         .collect(toList());
