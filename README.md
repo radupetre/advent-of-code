@@ -1,9 +1,9 @@
 # Advent of Code in Java
-Java sollutions for [Advent of Code].
+Java solutions for [Advent of Code].
 
 ### 2020 Calendar
 
-| Day | Challenge | Sollution |
+| Day | Challenge | Solution |
 | ------ | ------ | ------ |
 | 1 | [Report Repair][2020 day 01] | - |
 | 2 | [Password Philosophy][2020 day 02] | - |
