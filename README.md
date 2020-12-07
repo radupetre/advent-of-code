@@ -9,8 +9,10 @@ Java solutions for [Advent of Code].
 | 2 | [Password Philosophy][2020 day 02] | [PasswordPhilosophy.java](year2020/day02/PasswordPhilosophy.java) |
 | 3 | [Toboggan Trajectory][2020 day 03] | [TobogganTrajectory.java](year2020/day03/TobogganTrajectory.java) |
 | 4 | [Passport Processing][2020 day 04] | [PassportProcessing.java](year2020/day04/PassportProcessing.java) |
-| 5 | [Binary Boarding][2020 day 04] | [BinaryBoarding.java](year2020/day05/BinaryBoarding.java) |
-| 6 | [Custom Customs][2020 day 04] | [CustomCustoms.java](year2020/day06/CustomCustoms.java) |
+| 5 | [Binary Boarding][2020 day 05] | [BinaryBoarding.java](year2020/day05/BinaryBoarding.java) |
+| 6 | [Custom Customs][2020 day 06] | [CustomCustoms.java](year2020/day06/CustomCustoms.java) |
+| 7 | [Handy Haversacks][2020 day 07] | [HandyHaversacks.java](year2020/day07/HandyHaversacks.java) |
+
 
    [Advent of Code]: <https://adventofcode.com/>
    
