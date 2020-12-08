@@ -12,6 +12,7 @@ Java solutions for [Advent of Code].
 | 5 | [Binary Boarding][2020 day 05] | [BinaryBoarding.java](year2020/day05/BinaryBoarding.java) |
 | 6 | [Custom Customs][2020 day 06] | [CustomCustoms.java](year2020/day06/CustomCustoms.java) |
 | 7 | [Handy Haversacks][2020 day 07] | [HandyHaversacks.java](year2020/day07/HandyHaversacks.java) |
+| 7 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](year2020/day08/HandheldHalting.java) |
 
 
    [Advent of Code]: <https://adventofcode.com/>
