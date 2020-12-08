@@ -5,14 +5,14 @@ Java solutions for [Advent of Code].
 
 | Day | Challenge | Solution |
 | ------ | ------ | ------ |
-| 1 | [Report Repair][2020 day 01] | - |
-| 2 | [Password Philosophy][2020 day 02] | [PasswordPhilosophy.java](year2020/day02/PasswordPhilosophy.java) |
-| 3 | [Toboggan Trajectory][2020 day 03] | [TobogganTrajectory.java](year2020/day03/TobogganTrajectory.java) |
-| 4 | [Passport Processing][2020 day 04] | [PassportProcessing.java](year2020/day04/PassportProcessing.java) |
-| 5 | [Binary Boarding][2020 day 05] | [BinaryBoarding.java](year2020/day05/BinaryBoarding.java) |
-| 6 | [Custom Customs][2020 day 06] | [CustomCustoms.java](year2020/day06/CustomCustoms.java) |
-| 7 | [Handy Haversacks][2020 day 07] | [HandyHaversacks.java](year2020/day07/HandyHaversacks.java) |
-| 7 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](year2020/day08/HandheldHalting.java) |
+| 1 | [Report Repair][2020 day 01] | [ReportRepair.java](src/main/java/com/radupetre/adventofcode/year2020/day01/ReportRepair.java) |
+| 2 | [Password Philosophy][2020 day 02] | [PasswordPhilosophy.java](src/main/java/com/radupetre/adventofcode/year2020/day02/PasswordPhilosophy.java) |
+| 3 | [Toboggan Trajectory][2020 day 03] | [TobogganTrajectory.java](src/main/java/com/radupetre/adventofcode/year2020/day03/TobogganTrajectory.java) |
+| 4 | [Passport Processing][2020 day 04] | [PassportProcessing.java](src/main/java/com/radupetre/adventofcode/year2020/day04/PassportProcessing.java) |
+| 5 | [Binary Boarding][2020 day 05] | [BinaryBoarding.java](src/main/java/com/radupetre/adventofcode/year2020/day05/BinaryBoarding.java) |
+| 6 | [Custom Customs][2020 day 06] | [CustomCustoms.java](src/main/java/com/radupetre/adventofcode/year2020/day06/CustomCustoms.java) |
+| 7 | [Handy Haversacks][2020 day 07] | [HandyHaversacks.java](src/main/java/com/radupetre/adventofcode/year2020/day07/HandyHaversacks.java) |
+| 8 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](src/main/java/com/radupetre/adventofcode/year2020/day08/HandheldHalting.java) |
 
 
    [Advent of Code]: <https://adventofcode.com/>
