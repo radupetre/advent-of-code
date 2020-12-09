@@ -2,7 +2,6 @@ package com.radupetre.adventofcode.year2020.day07;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.lang.Integer.parseInt;
-import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static java.util.Collections.emptySet;
 import static java.util.stream.Collectors.toList;
@@ -10,6 +9,7 @@ import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.Collection;
 import java.util.HashMap;
@@ -35,16 +35,19 @@ public class HandyHaversacks extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String allRules) {
+  public Result solve(String allRules) {
     final List<BagRule> bagRules = getLines(allRules).stream()
         .filter(StringUtils::hasLength)
         .map(BagRule::new)
         .collect(toList());
 
-    log.info(format("Bags containing shiny gold: %s",
-        countBagsContainingTarget(bagRules, "shiny gold")));
-    log.info(format("Bags contained in shiny gold: %s",
-        countBagsContainedInTarget(bagRules, "shiny gold") - 1));
+    long bagsContainingTarget = countBagsContainingTarget(bagRules, "shiny gold");
+    log.info("Bags containing shiny gold: %s".formatted(bagsContainingTarget));
+
+    long bagsContainedInTarget = countBagsContainedInTarget(bagRules, "shiny gold") - 1;
+    log.info("Bags contained in shiny gold: %s".formatted(bagsContainedInTarget));
+
+    return new Result(bagsContainingTarget, bagsContainedInTarget);
   }
 
   private long countBagsContainedInTarget(List<BagRule> bagRules, String targetBag) {

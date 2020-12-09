@@ -2,16 +2,13 @@ package com.radupetre.adventofcode.year2020.day02;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.lang.Integer.parseInt;
-import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -29,20 +26,23 @@ public class PasswordPhilosophy extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String input) {
+  public Result solve(String input) {
     final List<PasswordPolicy> passwordPolicies = getLines(input)
         .stream()
         .filter(StringUtils::hasLength)
         .map(PasswordPolicy::new)
         .collect(toList());
 
-    log.info(String.format("Valid passwords by occurrence: %s",
-        countValid(passwordPolicies, this::isValidOccurrence)));
-    log.info(String.format("Valid passwords by positions: %s",
-        countValid(passwordPolicies, this::isValidPosition)));
+    long validPasswordsByOccurrence = countValid(passwordPolicies, this::isValidOccurrence);
+    log.info("Valid passwords by occurrence: %s".formatted(validPasswordsByOccurrence));
+
+    long validPasswordsByPosition = countValid(passwordPolicies, this::isValidPosition);
+    log.info("Valid passwords by positions: %s".formatted(validPasswordsByPosition));
+
+    return new Result(validPasswordsByOccurrence, validPasswordsByPosition);
   }
 
-  private Object countValid(
+  private long countValid(
       List<PasswordPolicy> passwordPolicies, Function<PasswordPolicy, Boolean> validator) {
     return passwordPolicies.stream()
         .filter(validator::apply)
@@ -62,7 +62,6 @@ public class PasswordPhilosophy extends AbstractAdventSolution {
   private boolean isValidPosition(PasswordPolicy passwordPolicy) {
     boolean ifFirstPositionMatch = false;
     boolean isSecondPositionMatch = false;
-    Set<Character> actualOccurrences = new HashSet<>();
 
     if (passwordPolicy.minOccurrence <= passwordPolicy.password.length()) {
       char firstPositionChar = passwordPolicy.password.charAt(passwordPolicy.minOccurrence - 1);

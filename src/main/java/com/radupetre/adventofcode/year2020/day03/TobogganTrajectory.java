@@ -4,6 +4,7 @@ import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.util.Arrays.asList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
@@ -24,13 +25,16 @@ public class TobogganTrajectory extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String map) {
+  public Result solve(String map) {
     List<String> mapLines = getLines(map);
 
-    log.info(String.format("Trees on first slope: %s",
-        countTreesOnSlope(mapLines, 3, 1)));
-    log.info(String.format("Trees multiplied on all slope: %s",
-        multiplyTreesOnAllSlopes(mapLines)));
+    int treesOnFirstSlope = countTreesOnSlope(mapLines, 3, 1);
+    log.info("Trees on first slope: %s".formatted(treesOnFirstSlope));
+
+    long multiplyTreesOnAllSlopes = multiplyTreesOnAllSlopes(mapLines);
+    log.info("Trees multiplied on all slope: %s".formatted(multiplyTreesOnAllSlopes));
+
+    return new Result(treesOnFirstSlope, multiplyTreesOnAllSlopes);
   }
 
   private long multiplyTreesOnAllSlopes(List<String> mapLines) {

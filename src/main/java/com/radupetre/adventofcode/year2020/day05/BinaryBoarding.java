@@ -4,6 +4,7 @@ import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
@@ -22,18 +23,23 @@ public class BinaryBoarding extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String boardingPasses) {
+  public Result solve(String boardingPasses) {
     final List<Integer> seatIds = getLines(boardingPasses)
         .stream()
         .mapToInt(this::calculateSeatId)
         .boxed()
         .collect(toList());
 
-    log.info(String.format("Highest seatId: %s", getHighestSeatId(seatIds)));
-    log.info(String.format("Missing seatId: %s", getMissingSeatId(seatIds)));
+    int highestSeatId = getHighestSeatId(seatIds);
+    log.info("Highest seatId: %s".formatted(highestSeatId));
+
+    int missingSeatId = getMissingSeatId(seatIds);
+    log.info("Missing seatId: %s".formatted(missingSeatId));
+
+    return new Result(highestSeatId, missingSeatId);
   }
 
-  private Integer getMissingSeatId(List<Integer> seatIds) {
+  private int getMissingSeatId(List<Integer> seatIds) {
     int actualSeatIdsSum = 0;
     int minSeatId = Integer.MAX_VALUE;
     int maxSeatId = Integer.MIN_VALUE;
@@ -49,7 +55,7 @@ public class BinaryBoarding extends AbstractAdventSolution {
     return missingSeatId;
   }
 
-  private Integer getHighestSeatId(List<Integer> seatIds) {
+  private int getHighestSeatId(List<Integer> seatIds) {
     return seatIds.stream()
         .mapToInt(Integer::intValue)
         .max()

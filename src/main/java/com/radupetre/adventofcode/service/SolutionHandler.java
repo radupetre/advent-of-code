@@ -21,6 +21,8 @@ public class SolutionHandler {
 
   private final static String INPUT_PATH_TEMPLATE = "classpath:input/year%d/day%02d/input.txt";
 
+  private final static String OUTPUT_PATH_TEMPLATE = "classpath:output/year%d/day%02d/output.txt";
+
   public void handle(AbstractAdventSolution adventSolution) {
     final SolveContext solveContext = adventSolution.getSolveContext();
     String input = fetchInput(solveContext);
@@ -29,9 +31,27 @@ public class SolutionHandler {
     adventSolution.solve(input);
   }
 
-  private String fetchInput(SolveContext solveContext) {
+  public String fetchInput(SolveContext solveContext) {
+    return fetchFileContents(createInputPath(solveContext));
+  }
+
+  private String createInputPath(SolveContext solveContext) {
+    return String
+        .format(INPUT_PATH_TEMPLATE, solveContext.getYear(), solveContext.getDay());
+  }
+
+  public String fetchOutput(SolveContext solveContext) {
+    return fetchFileContents(createOutputPath(solveContext));
+  }
+
+  private String createOutputPath(SolveContext solveContext) {
+    return String
+        .format(OUTPUT_PATH_TEMPLATE, solveContext.getYear(), solveContext.getDay());
+  }
+
+  private String fetchFileContents(String path) {
     ResourceLoader resourceLoader = new DefaultResourceLoader();
-    Resource resource = resourceLoader.getResource(createInputPath(solveContext));
+    Resource resource = resourceLoader.getResource(path);
 
     try (Reader reader = new InputStreamReader(resource.getInputStream(), UTF_8)) {
       return FileCopyUtils.copyToString(reader);
@@ -40,8 +60,4 @@ public class SolutionHandler {
     }
   }
 
-  private String createInputPath(SolveContext solveContext) {
-    return String
-        .format(INPUT_PATH_TEMPLATE, solveContext.getYear(), solveContext.getDay());
-  }
 }

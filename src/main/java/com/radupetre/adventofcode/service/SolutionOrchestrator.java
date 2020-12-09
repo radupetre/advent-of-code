@@ -34,7 +34,7 @@ public class SolutionOrchestrator {
 
   public void runSolutions() {
     solutions.stream()
-        .sorted(comparing(AbstractAdventSolution::getSolveContext).reversed())
+        .sorted(comparing(AbstractAdventSolution::getSolveContext))
         .forEach(solutionHandler::handle);
   }
 }

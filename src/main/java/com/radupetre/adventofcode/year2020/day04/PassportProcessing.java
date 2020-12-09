@@ -6,6 +6,7 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toMap;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import java.util.Map;
@@ -36,17 +37,20 @@ public class PassportProcessing extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String passportBatches) {
+  public Result solve(String passportBatches) {
     final List<String> batches = getBatches(passportBatches, BATCH_SEPARATOR);
 
     final List<Map<String, String>> passportsWithFields = batches.stream()
         .map(this::extractPassportFields)
         .collect(Collectors.toList());
 
-    log.info(String.format("Valid by nr of fields: %s",
-        countPassportsWithMandatoryFields(passportsWithFields)));
-    log.info(String.format("Valid by content of fields: %s",
-        countPassportsWithValidData(passportsWithFields)));
+    long passportCountWithMandatoryFields = countPassportsWithMandatoryFields(passportsWithFields);
+    log.info("Valid by nr of fields: %s".formatted(passportCountWithMandatoryFields));
+
+    long passportsWithValidData = countPassportsWithValidData(passportsWithFields);
+    log.info("Valid by content of fields: %s".formatted(passportsWithValidData));
+
+    return new Result(passportCountWithMandatoryFields, passportsWithValidData);
   }
 
   private long countPassportsWithMandatoryFields(List<Map<String, String>> passportsWithFields) {
@@ -73,12 +77,13 @@ public class PassportProcessing extends AbstractAdventSolution {
   private boolean hasValidFields(Map<String, String> passportsWithFields) {
     boolean isValid = true;
     for (Entry<String, String> passportField : passportsWithFields.entrySet()) {
-      if (!isValid)
+      if (!isValid) {
         return false;
+      }
 
       isValid = isFieldValid(passportField.getKey(), passportField.getValue());
     }
-    return  isValid;
+    return isValid;
   }
 
   public Map<String, String> extractPassportFields(String passportBatchInformation) {
@@ -149,9 +154,12 @@ class FieldValidator {
     String value = height.substring(0, height.length() - 2);
 
     switch (unit) {
-      case "cm" : return hasOnlyDigits(value) && hasLimits(value, "150", "193");
-      case "in" : return hasOnlyDigits(value) && hasLimits(value, "59", "76");
-      default : return false;
+      case "cm":
+        return hasOnlyDigits(value) && hasLimits(value, "150", "193");
+      case "in":
+        return hasOnlyDigits(value) && hasLimits(value, "59", "76");
+      default:
+        return false;
     }
   }
 }

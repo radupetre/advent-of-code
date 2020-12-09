@@ -1,11 +1,11 @@
 package com.radupetre.adventofcode.year2020.day09;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
-import static java.lang.String.format;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.HashSet;
 import java.util.List;
@@ -28,16 +28,18 @@ public class EncodingError extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String allNumbers) {
+  public Result solve(String allNumbers) {
     final List<Long> numbers = getLines(allNumbers).stream()
         .map(Long::valueOf)
         .collect(toList());
 
     long numberWithMissingSum = findFirstNumberWithMissingSum(numbers, 25);
-    log.info(format("First number with missing sum: %s", numberWithMissingSum));
+    log.info("First number with missing sum: %s".formatted(numberWithMissingSum));
 
-    log.info(format("Min + Max in interval with sum: %s",
-        minPlusMaxInIntervalWithSum(numbers, numberWithMissingSum)));
+    long minPlusMaxInIntervalWithSum = minPlusMaxInIntervalWithSum(numbers, numberWithMissingSum);
+    log.info("Min + Max in interval with sum: %s".formatted(minPlusMaxInIntervalWithSum));
+
+    return new Result(numberWithMissingSum, minPlusMaxInIntervalWithSum);
   }
 
   private long minPlusMaxInIntervalWithSum(List<Long> numbers, long requiredSum) {

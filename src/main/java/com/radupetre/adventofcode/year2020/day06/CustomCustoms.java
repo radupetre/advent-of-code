@@ -2,10 +2,10 @@ package com.radupetre.adventofcode.year2020.day06;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getBatches;
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
-import static java.lang.String.format;
 import static java.util.stream.Collectors.toSet;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import java.util.Set;
@@ -27,13 +27,18 @@ public class CustomCustoms extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String declarations) {
+  public Result solve(String declarations) {
     final List<String> declarationBatches = getBatches(declarations, BATCH_SEPARATOR);
 
-    log.info(format("Sum of distinct answers: %s",
-        countDistinctAnswersInDeclarationBatches(declarationBatches)));
-    log.info(format("Sum of common answers: %s",
-        countCommonAnswersInDeclarationBatches(declarationBatches)));
+    long distinctAnswersInDeclarationBatch = countDistinctAnswersInDeclarationBatches(
+        declarationBatches);
+    log.info("Sum of distinct answers: %s".formatted(distinctAnswersInDeclarationBatch));
+
+    long commonAnswersInDeclarationBatches = countCommonAnswersInDeclarationBatches(
+        declarationBatches);
+    log.info("Sum of common answers: %s".formatted(commonAnswersInDeclarationBatches));
+
+    return new Result(distinctAnswersInDeclarationBatch, commonAnswersInDeclarationBatches);
   }
 
   private long countCommonAnswersInDeclarationBatches(List<String> declarationBatches) {

@@ -3,10 +3,10 @@ package com.radupetre.adventofcode.year2020.day08;
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static com.radupetre.adventofcode.year2020.day08.Operation.ACC;
 import static com.radupetre.adventofcode.year2020.day08.Operation.JMP;
-import static java.lang.String.format;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
+import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.EnumSet;
 import java.util.HashSet;
@@ -36,13 +36,18 @@ public class HandheldHalting extends AbstractAdventSolution {
   }
 
   @Override
-  public void solve(String allInstructions) {
+  public Result solve(String allInstructions) {
     instructions = getLines(allInstructions).stream()
         .map(Instruction::new)
         .collect(toList());
 
-    log.info(format("Accumulator before loop: %s", getAccumulatorBeforeFirstLoop()));
-    log.info(format("Accumulator without loop: %s", getAccumulatorWithoutLoop()));
+    int accumulatorBeforeFirstLoop = getAccumulatorBeforeFirstLoop();
+    log.info("Accumulator before loop: %s".formatted(accumulatorBeforeFirstLoop));
+
+    int accumulatorWithoutLoop = getAccumulatorWithoutLoop();
+    log.info("Accumulator without loop: %s".formatted(accumulatorWithoutLoop));
+
+    return new Result(accumulatorBeforeFirstLoop, accumulatorWithoutLoop);
   }
 
   private int getAccumulatorBeforeFirstLoop() {
