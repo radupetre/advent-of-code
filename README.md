@@ -13,11 +13,11 @@ Java solutions for [Advent of Code].
 | 6 | [Custom Customs][2020 day 06] | [CustomCustoms.java](src/main/java/com/radupetre/adventofcode/year2020/day06/CustomCustoms.java) |
 | 7 | [Handy Haversacks][2020 day 07] | [HandyHaversacks.java](src/main/java/com/radupetre/adventofcode/year2020/day07/HandyHaversacks.java) |
 | 8 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](src/main/java/com/radupetre/adventofcode/year2020/day08/HandheldHalting.java) |
+| 9 | [Encoding Error][2020 day 09] | [EncodingError.java](src/main/java/com/radupetre/adventofcode/year2020/day09/EncodingError.java) |
 
 
-   [Advent of Code]: <https://adventofcode.com/>
+   [Advent of Code]: <https://adventofcode.com/> 
    
-   [Advent of Code]: <https://adventofcode.com/>
    [2020 day 01]: <https://adventofcode.com/2020/day/1>
    [2020 day 02]: <https://adventofcode.com/2020/day/2>
    [2020 day 03]: <https://adventofcode.com/2020/day/3>
