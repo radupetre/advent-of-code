@@ -1,4 +1,4 @@
-![All good!](https://github.com/radupetre/advent-of-code/workflows/java-gradle/badge.svg)
+![All good!](https://github.com/radupetre/advent-of-code/workflows/java-gradle-main/badge.svg)
 
 # Advent of Code in Java
 Java solutions for [Advent of Code].
