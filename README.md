@@ -17,6 +17,7 @@ Java solutions for [Advent of Code].
 | 8 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](src/main/java/com/radupetre/adventofcode/year2020/day08/HandheldHalting.java) |
 | 9 | [Encoding Error][2020 day 09] | [EncodingError.java](src/main/java/com/radupetre/adventofcode/year2020/day09/EncodingError.java) |
 | 10 | [Adapter Array][2020 day 10] | [AdapterArray.java](src/main/java/com/radupetre/adventofcode/year2020/day10/AdapterArray.java) |
+| 11 | [Seating System][2020 day 11] | [SeatingSystem.java](src/main/java/com/radupetre/adventofcode/year2020/day11/SeatingSystem.java) |
 
 
    [Advent of Code]: <https://adventofcode.com/> 
