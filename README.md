@@ -18,6 +18,7 @@ Java solutions for [Advent of Code].
 | 9 | [Encoding Error][2020 day 09] | [EncodingError.java](src/main/java/com/radupetre/adventofcode/year2020/day09/EncodingError.java) |
 | 10 | [Adapter Array][2020 day 10] | [AdapterArray.java](src/main/java/com/radupetre/adventofcode/year2020/day10/AdapterArray.java) |
 | 11 | [Seating System][2020 day 11] | [SeatingSystem.java](src/main/java/com/radupetre/adventofcode/year2020/day11/SeatingSystem.java) |
+| 12 | [Rain Risk][2020 day 12] | [RainRisk.java](src/main/java/com/radupetre/adventofcode/year2020/day12/RainRisk.java) |
 
 
    [Advent of Code]: <https://adventofcode.com/> 
