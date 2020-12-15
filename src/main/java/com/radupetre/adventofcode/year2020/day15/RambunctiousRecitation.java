@@ -41,24 +41,24 @@ public class RambunctiousRecitation extends AbstractAdventSolution {
   }
 
   private int getNthSpokenNumber(List<Integer> startingNumbers, int targetPosition) {
-    AtomicInteger currentPosition = new AtomicInteger(1);
-    Map<Integer, Integer> lastOccurrenceOfNumber = new HashMap<>();
+    int currentPosition = 1;
+    Map<Integer, Integer> lastSeen = new HashMap<>();
 
     // first add starting numbers
-    startingNumbers.forEach(startingNumber -> {
-      lastOccurrenceOfNumber.put(startingNumber, currentPosition.getAndIncrement());
-    });
+    for (int startingNumber : startingNumbers) {
+      lastSeen.put(startingNumber, currentPosition++);
+    }
 
-    boolean firstTimeSpoken = true;
+    boolean seen = false;
     int turnsSpokenApart = 0;
     int nextNumber = 0;
 
     // then apply the rules
-    while (currentPosition.get() <= targetPosition) {
-      nextNumber = firstTimeSpoken ? 0 : turnsSpokenApart;
-      turnsSpokenApart = currentPosition.get() - lastOccurrenceOfNumber.getOrDefault(nextNumber, 0);
-      firstTimeSpoken = !lastOccurrenceOfNumber.containsKey(nextNumber);
-      lastOccurrenceOfNumber.put(nextNumber, currentPosition.getAndIncrement());
+    while (currentPosition <= targetPosition) {
+      nextNumber = seen ? turnsSpokenApart : 0;
+      turnsSpokenApart = currentPosition - lastSeen.getOrDefault(nextNumber, 0);
+      seen = lastSeen.containsKey(nextNumber);
+      lastSeen.put(nextNumber, currentPosition++);
     }
 
     return nextNumber;
