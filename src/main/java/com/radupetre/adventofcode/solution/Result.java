@@ -1,7 +1,8 @@
 package com.radupetre.adventofcode.solution;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 
+@Getter
 public class Result {
   private final String first;
   private final String second;

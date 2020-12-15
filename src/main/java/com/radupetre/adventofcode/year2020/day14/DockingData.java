@@ -40,64 +40,51 @@ public class DockingData extends AbstractAdventSolution {
     List<String> inputLines = getLines(input).stream()
         .collect(toList());
 
-    BigInteger memoryTotalForValuesMask = getMemoryTotalForValueMask(inputLines);
-    log.info("Memory Total for values mask: %s".formatted(memoryTotalForValuesMask));
+    Result result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
+    log.info("Memory Total for values mask: %s".formatted(result.getFirst()));
+    log.info("Memory Total for address mask: %s".formatted(result.getSecond()));
 
-    BigInteger memoryTotalForAddressMask = getMemoryTotalForAddressMask(inputLines);
-    log.info("Memory Total for address mask: %s".formatted(memoryTotalForAddressMask));
-
-    return new Result(memoryTotalForValuesMask, memoryTotalForAddressMask);
+    return result;
   }
 
-  private BigInteger getMemoryTotalForValueMask(List<String> inputLines) {
-    Map<BigInteger, BigInteger> valuesByAddress = new HashMap<>();
+  private Result getMaskedValuesSumAndMaskedAddressesSum(List<String> inputLines) {
+    Map<BigInteger, BigInteger> maskedValuedByAddress = new HashMap<>();
+    Map<BigInteger, BigInteger> valuesByMaskedAddress = new HashMap<>();
+
     BigInteger orMask = null;
     BigInteger andMask = null;
-
-    for (String inputLine : inputLines) {
-      if (inputLine.startsWith(MASK_PREFIX)) {
-        String maskString = parseMask(inputLine);
-
-        String orMaskString = maskString.replaceAll(WILDCARD_MASK, "0");
-        String andMaskString = maskString.replaceAll(WILDCARD_MASK, "1");
-
-        orMask = new BigInteger(orMaskString, 2);
-        andMask = new BigInteger(andMaskString, 2);
-
-      } else {
-        MemoryWrite memWrite = parseMemoryWrite(inputLine);
-        BigInteger valueAfterMask = memWrite.value.and(andMask).or(orMask);
-        valuesByAddress.put(memWrite.address, valueAfterMask);
-
-      }
-    }
-
-    return sumMemoryValues(valuesByAddress);
-  }
-
-  private BigInteger getMemoryTotalForAddressMask(List<String> inputLines) {
-    Map<BigInteger, BigInteger> valuesByAddress = new HashMap<>();
-    BigInteger orMask = null;
     List<Integer> wildcardMaskPositions = new ArrayList<>();
 
     for (String inputLine : inputLines) {
       if (inputLine.startsWith(MASK_PREFIX)) {
         String maskString = parseMask(inputLine);
 
+        // part 1
         String orMaskString = maskString.replaceAll(WILDCARD_MASK, "0");
         orMask = new BigInteger(orMaskString, 2);
 
-        wildcardMaskPositions = getWildcardPositions(maskString);
-      } else {
-        MemoryWrite memWrite = parseMemoryWrite(inputLine);
-        BigInteger addressAfterMask = memWrite.address.or(orMask);
+        String andMaskString = maskString.replaceAll(WILDCARD_MASK, "1");
+        andMask = new BigInteger(andMaskString, 2);
 
-        generatePermutations(addressAfterMask, wildcardMaskPositions)
-            .forEach(addressPermutation -> valuesByAddress.put(addressPermutation, memWrite.value));
+        // part 2
+        wildcardMaskPositions = getWildcardPositions(maskString);
+
+      } else {
+        // part 1
+        MemoryWrite memWrite = parseMemoryWrite(inputLine);
+        BigInteger maskedValue = memWrite.value.and(andMask).or(orMask);
+        maskedValuedByAddress.put(memWrite.address, maskedValue);
+
+        // part 2
+        BigInteger maskedAddress = memWrite.address.or(orMask);
+        generatePermutations(maskedAddress, wildcardMaskPositions)
+            .forEach(addressPermutation ->
+                valuesByMaskedAddress.put(addressPermutation, memWrite.value));
       }
     }
 
-    return sumMemoryValues(valuesByAddress);
+    return new Result(sumMemoryValues(maskedValuedByAddress),
+        sumMemoryValues(valuesByMaskedAddress));
   }
 
   private Set<BigInteger> generatePermutations(BigInteger address,
