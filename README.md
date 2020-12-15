@@ -19,8 +19,9 @@ Java solutions for [Advent of Code].
 | 10 | [Adapter Array][2020 day 10] | [AdapterArray.java](src/main/java/com/radupetre/adventofcode/year2020/day10/AdapterArray.java) |
 | 11 | [Seating System][2020 day 11] | [SeatingSystem.java](src/main/java/com/radupetre/adventofcode/year2020/day11/SeatingSystem.java) |
 | 12 | [Rain Risk][2020 day 12] | [RainRisk.java](src/main/java/com/radupetre/adventofcode/year2020/day12/RainRisk.java) |
-| 13 | [Shuttle Search][2020 day 13] | [Shuttle Search.java](src/main/java/com/radupetre/adventofcode/year2020/day13/ShuttleSearch.java) |
-| 14 | [Docking Data][2020 day 14] | [Docking Data.java](src/main/java/com/radupetre/adventofcode/year2020/day14/DockingData.java) |
+| 13 | [Shuttle Search][2020 day 13] | [ShuttleSearch.java](src/main/java/com/radupetre/adventofcode/year2020/day13/ShuttleSearch.java) |
+| 14 | [Docking Data][2020 day 14] | [DockingData.java](src/main/java/com/radupetre/adventofcode/year2020/day14/DockingData.java) |
+| 15 | [Rambunctious Recitation][2020 day 15] | [RambunctiousRecitation.java](src/main/java/com/radupetre/adventofcode/year2020/day15/RambunctiousRecitation.java) |
 
 
    [Advent of Code]: <https://adventofcode.com/> 
