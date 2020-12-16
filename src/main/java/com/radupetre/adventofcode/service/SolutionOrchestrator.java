@@ -5,8 +5,6 @@ import static java.util.Comparator.comparing;
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,6 @@ package com.radupetre.adventofcode.year2020.day13;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.lang.Integer.parseInt;
-import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
