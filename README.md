@@ -23,6 +23,7 @@ Java solutions for [Advent of Code].
 | 14 | [Docking Data][2020 day 14] | [DockingData.java](src/main/java/com/radupetre/adventofcode/year2020/day14/DockingData.java) |
 | 15 | [Rambunctious Recitation][2020 day 15] | [RambunctiousRecitation.java](src/main/java/com/radupetre/adventofcode/year2020/day15/RambunctiousRecitation.java) |
 | 16 | [Ticket Translation][2020 day 16] | [TicketTranslation.java](src/main/java/com/radupetre/adventofcode/year2020/day16/TicketTranslation.java) |
+| 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) |
 
 
    [Advent of Code]: <https://adventofcode.com/> 

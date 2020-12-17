@@ -51,7 +51,6 @@ public class TicketTranslation extends AbstractAdventSolution {
           invalidFieldsSum += fieldNumber;
         }
       }
-
       if (isValidTicket) {
         validTickets.add(ticket);
       }
