@@ -24,6 +24,7 @@ Java solutions for [Advent of Code].
 | 15 | [Rambunctious Recitation][2020 day 15] | [RambunctiousRecitation.java](src/main/java/com/radupetre/adventofcode/year2020/day15/RambunctiousRecitation.java) |
 | 16 | [Ticket Translation][2020 day 16] | [TicketTranslation.java](src/main/java/com/radupetre/adventofcode/year2020/day16/TicketTranslation.java) |
 | 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) |
+| 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) |
 
 
    [Advent of Code]: <https://adventofcode.com/> 
