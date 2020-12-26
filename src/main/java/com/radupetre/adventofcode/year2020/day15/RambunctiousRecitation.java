@@ -25,20 +25,20 @@ public class RambunctiousRecitation extends AbstractAdventSolution {
 
   @Override
   public Object solvePart1(String inputNumbers) {
-    final List<Integer> startingNumbers = Arrays.stream(inputNumbers.split(","))
-        .map(Integer::valueOf)
-        .collect(toList());
-
+    final List<Integer> startingNumbers = parseNumbers(inputNumbers);
     return getNthSpokenNumber(startingNumbers, 2020);
   }
 
   @Override
   public Object solvePart2(String inputNumbers) {
-    final List<Integer> startingNumbers = Arrays.stream(inputNumbers.split(","))
+    final List<Integer> startingNumbers = parseNumbers(inputNumbers);
+    return getNthSpokenNumber(startingNumbers, 30_000_000);
+  }
+
+  private List<Integer> parseNumbers(String inputNumbers) {
+    return Arrays.stream(inputNumbers.split(","))
         .map(Integer::valueOf)
         .collect(toList());
-
-    return getNthSpokenNumber(startingNumbers, 30_000_000);
   }
 
   private int getNthSpokenNumber(List<Integer> startingNumbers, int targetPosition) {

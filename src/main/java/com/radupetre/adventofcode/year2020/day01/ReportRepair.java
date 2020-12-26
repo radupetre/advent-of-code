@@ -65,7 +65,8 @@ public class ReportRepair extends AbstractAdventSolution {
     return Pair.of(0, 0);
   }
 
-  private Triple<Integer, Integer, Integer> findTripletWithSum(Set<Integer> entries, int expectedSum) {
+  private Triple<Integer, Integer, Integer> findTripletWithSum(Set<Integer> entries,
+      int expectedSum) {
     Set<Integer> desiredPairSums = new HashSet<>();
     Set<Integer> desiredEntries = new HashSet<>();
     Map<Integer, Pair<Integer, Integer>> pairsCache = new HashMap<>();

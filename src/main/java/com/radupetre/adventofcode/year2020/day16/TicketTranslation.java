@@ -28,14 +28,12 @@ public class TicketTranslation extends AbstractAdventSolution {
   @Override
   public Object solvePart1(String input) {
     notes = new TicketNotes(input);
-
     return calculateTicketErrorRate();
   }
 
   @Override
   public Object solvePart2(String input) {
     notes = new TicketNotes(input);
-
     return multiplyValuesOnOwnTicket();
   }
 

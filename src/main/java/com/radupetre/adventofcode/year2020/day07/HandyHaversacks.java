@@ -1,8 +1,6 @@
 package com.radupetre.adventofcode.year2020.day07;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
-import static java.lang.Integer.parseInt;
-import static java.util.Arrays.stream;
 import static java.util.Collections.emptySet;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
@@ -16,7 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

@@ -17,14 +17,21 @@ Java solutions for [Advent of Code].
 | 8 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](src/main/java/com/radupetre/adventofcode/year2020/day08/HandheldHalting.java) | ⏱️1.314 | ⏱️4.925 |
 | 9 | [Encoding Error][2020 day 09] | [EncodingError.java](src/main/java/com/radupetre/adventofcode/year2020/day09/EncodingError.java) | ⏱️3.323 | ⏱️1.609 |
 | 10 | [Adapter Array][2020 day 10] | [AdapterArray.java](src/main/java/com/radupetre/adventofcode/year2020/day10/AdapterArray.java) | ⏱️1.892 | ⏱️0.170 |
-| 11 | [Seating System][2020 day 11] | [SeatingSystem.java](src/main/java/com/radupetre/adventofcode/year2020/day11/SeatingSystem.java) |
-| 12 | [Rain Risk][2020 day 12] | [RainRisk.java](src/main/java/com/radupetre/adventofcode/year2020/day12/RainRisk.java) |
-| 13 | [Shuttle Search][2020 day 13] | [ShuttleSearch.java](src/main/java/com/radupetre/adventofcode/year2020/day13/ShuttleSearch.java) |
-| 14 | [Docking Data][2020 day 14] | [DockingData.java](src/main/java/com/radupetre/adventofcode/year2020/day14/DockingData.java) |
-| 15 | [Rambunctious Recitation][2020 day 15] | [RambunctiousRecitation.java](src/main/java/com/radupetre/adventofcode/year2020/day15/RambunctiousRecitation.java) |
-| 16 | [Ticket Translation][2020 day 16] | [TicketTranslation.java](src/main/java/com/radupetre/adventofcode/year2020/day16/TicketTranslation.java) |
-| 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) |
-| 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) |
+| 11 | [Seating System][2020 day 11] | [SeatingSystem.java](src/main/java/com/radupetre/adventofcode/year2020/day11/SeatingSystem.java) | ⏱️699.651 | ⏱️548.468 |
+| 12 | [Rain Risk][2020 day 12] | [RainRisk.java](src/main/java/com/radupetre/adventofcode/year2020/day12/RainRisk.java) | ⏱️1.492 | ⏱️1.467 |
+| 13 | [Shuttle Search][2020 day 13] | [ShuttleSearch.java](src/main/java/com/radupetre/adventofcode/year2020/day13/ShuttleSearch.java) | ⏱️0.272 | ⏱️0.074 |
+| 14 | [Docking Data][2020 day 14] | [DockingData.java](src/main/java/com/radupetre/adventofcode/year2020/day14/DockingData.java) | ⏱️3.581 | ⏱️32.486 |
+| 15 | [Rambunctious Recitation][2020 day 15] | [RambunctiousRecitation.java](src/main/java/com/radupetre/adventofcode/year2020/day15/RambunctiousRecitation.java) | ⏱️0.571 | ⏱️4142.190 |
+| 16 | [Ticket Translation][2020 day 16] | [TicketTranslation.java](src/main/java/com/radupetre/adventofcode/year2020/day16/TicketTranslation.java) | ⏱️3.825 | ⏱️- |
+| 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) | ⏱️10.002 | ⏱️182.570 |
+| 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) | ⏱️5.360 | ⏱️- |
+| 19 | [?][2020 day 19] | [?](src/main/java/com/radupetre/adventofcode/year2020/day19/?.java) | ⏱️- | ⏱️- |
+| 20 | [?][2020 day 20] | [?](src/main/java/com/radupetre/adventofcode/year2020/day20/?.java) | ⏱️- | ⏱️- |
+| 21 | [?][2020 day 21] | [?](src/main/java/com/radupetre/adventofcode/year2020/day21/?.java) | ⏱️- | ⏱️- |
+| 22 | [?][2020 day 22] | [?](src/main/java/com/radupetre/adventofcode/year2020/day22/?.java) | ⏱️- | ⏱️- |
+| 23 | [?][2020 day 23] | [?](src/main/java/com/radupetre/adventofcode/year2020/day23/?.java) | ⏱️- | ⏱️- |
+| 24 | [?][2020 day 24] | [?](src/main/java/com/radupetre/adventofcode/year2020/day24/?.java) | ⏱️- | ⏱️- |
+| 25 | [?][2020 day 25] | [?](src/main/java/com/radupetre/adventofcode/year2020/day25/?.java) | ⏱️- | ⏱️- |
 
 
    [Advent of Code]: <https://adventofcode.com/> 

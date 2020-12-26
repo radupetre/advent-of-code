@@ -4,7 +4,6 @@ import static java.util.Comparator.comparing;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
-import java.util.Arrays;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

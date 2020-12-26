@@ -1,7 +1,6 @@
 package com.radupetre.adventofcode.year2020.day03;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
-import static java.util.Arrays.asList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;

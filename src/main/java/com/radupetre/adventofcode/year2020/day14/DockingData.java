@@ -1,7 +1,6 @@
 package com.radupetre.adventofcode.year2020.day14;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
-import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
@@ -12,9 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Service;
 
 /**
@@ -36,54 +33,61 @@ public class DockingData extends AbstractAdventSolution {
   }
 
   @Override
-  public Object solvePart1(String input) {
-    List<String> inputLines = getLines(input).stream()
-        .collect(toList());
-
-    Pair result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
-
-    return result.getLeft();
+  public BigInteger solvePart1(String input) {
+    List<String> inputLines = new ArrayList<>(getLines(input));
+    return getMaskedValuesSum(inputLines);
   }
 
   @Override
   public Object solvePart2(String input) {
-    List<String> inputLines = getLines(input).stream()
-        .collect(toList());
-
-    Pair result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
-
-    return result.getRight();
+    List<String> inputLines = new ArrayList<>(getLines(input));
+    return getMaskedAddressesSum(inputLines);
   }
 
-  private Pair getMaskedValuesSumAndMaskedAddressesSum(List<String> inputLines) {
-    Map<BigInteger, BigInteger> maskedValuedByAddress = new HashMap<>();
-    Map<BigInteger, BigInteger> valuesByMaskedAddress = new HashMap<>();
+  private BigInteger getMaskedValuesSum(List<String> inputLines) {
+    Map<BigInteger, BigInteger> maskedValuesByAddress = new HashMap<>();
 
     BigInteger orMask = null;
     BigInteger andMask = null;
-    List<Integer> wildcardMaskPositions = new ArrayList<>();
 
     for (String inputLine : inputLines) {
       if (inputLine.startsWith(MASK_PREFIX)) {
         String maskString = parseMask(inputLine);
 
-        // part 1
         String orMaskString = maskString.replaceAll(WILDCARD_MASK, "0");
         orMask = new BigInteger(orMaskString, 2);
 
         String andMaskString = maskString.replaceAll(WILDCARD_MASK, "1");
         andMask = new BigInteger(andMaskString, 2);
 
-        // part 2
+      } else {
+        MemoryWrite memWrite = parseMemoryWrite(inputLine);
+        BigInteger maskedValue = memWrite.value.and(andMask).or(orMask);
+        maskedValuesByAddress.put(memWrite.address, maskedValue);
+
+      }
+    }
+
+    return sumMemoryValues(maskedValuesByAddress);
+  }
+
+  private BigInteger getMaskedAddressesSum(List<String> inputLines) {
+    Map<BigInteger, BigInteger> valuesByMaskedAddress = new HashMap<>();
+
+    BigInteger orMask = null;
+    List<Integer> wildcardMaskPositions = new ArrayList<>();
+
+    for (String inputLine : inputLines) {
+      if (inputLine.startsWith(MASK_PREFIX)) {
+        String maskString = parseMask(inputLine);
+
+        String orMaskString = maskString.replaceAll(WILDCARD_MASK, "0");
+        orMask = new BigInteger(orMaskString, 2);
+
         wildcardMaskPositions = getWildcardPositions(maskString);
 
       } else {
-        // part 1
         MemoryWrite memWrite = parseMemoryWrite(inputLine);
-        BigInteger maskedValue = memWrite.value.and(andMask).or(orMask);
-        maskedValuedByAddress.put(memWrite.address, maskedValue);
-
-        // part 2
         BigInteger maskedAddress = memWrite.address.or(orMask);
         generatePermutations(maskedAddress, wildcardMaskPositions)
             .forEach(addressPermutation ->
@@ -91,8 +95,7 @@ public class DockingData extends AbstractAdventSolution {
       }
     }
 
-    return Pair.of(sumMemoryValues(maskedValuedByAddress),
-        sumMemoryValues(valuesByMaskedAddress));
+    return sumMemoryValues(valuesByMaskedAddress);
   }
 
   private Set<BigInteger> generatePermutations(BigInteger address,
@@ -146,9 +149,3 @@ public class DockingData extends AbstractAdventSolution {
   }
 }
 
-@RequiredArgsConstructor
-class MemoryWrite {
-
-  final BigInteger address;
-  final BigInteger value;
-}

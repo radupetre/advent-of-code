@@ -5,12 +5,10 @@ import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
-import com.radupetre.adventofcode.utils.StringUtility;
 import java.nio.CharBuffer;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -46,14 +44,12 @@ public class SeatingSystem extends AbstractAdventSolution {
   @Override
   public Object solvePart1(String seatPlanString) {
     SeatPlan seatPlan = new SeatPlan(seatPlanString);
-
     return getOccupiedSeatsAfterMoving(seatPlan, ADJACENT_NEIGHBOURS, FOUR);
   }
 
   @Override
   public Object solvePart2(String seatPlanString) {
     SeatPlan seatPlan = new SeatPlan(seatPlanString);
-
     return getOccupiedSeatsAfterMoving(seatPlan, VISIBLE_NEIGHBOURS, FIVE);
   }
 
@@ -184,41 +180,5 @@ public class SeatingSystem extends AbstractAdventSolution {
         .flatMapToInt(seatsRow -> CharBuffer.wrap(seatsRow).chars())
         .filter(seatStatus -> seatStatus == OCCUPIED_SEAT)
         .count();
-  }
-}
-
-@AllArgsConstructor()
-class SeatPlan {
-
-  final int rows;
-  final int columns;
-  char[][] seats;
-
-  SeatPlan(String seatingPlanString) {
-    final List<String> seatingLines = StringUtility.getLines(seatingPlanString);
-
-    this.rows = seatingLines.size();
-    this.columns = seatingLines.get(0).length();
-
-    this.seats = new char[rows][columns];
-    for (int row = 0; row < rows; row++) {
-      for (int column = 0; column < columns; column++) {
-        seats[row][column] = seatingLines.get(row).charAt(column);
-      }
-    }
-  }
-
-  public void updateSeating(char[][] seatsAtNextStep) {
-    seats = seatsAtNextStep;
-  }
-
-  SeatPlan copy() {
-    return new SeatPlan(this.rows, this.columns, copySeats());
-  }
-
-  char[][] copySeats() {
-    return Arrays.stream(this.seats)
-        .map(char[]::clone)
-        .toArray(char[][]::new);
   }
 }

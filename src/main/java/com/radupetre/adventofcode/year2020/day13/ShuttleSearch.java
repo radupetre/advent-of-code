@@ -8,7 +8,6 @@ import static java.util.stream.IntStream.range;
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +29,6 @@ public class ShuttleSearch extends AbstractAdventSolution {
   @Override
   public Object solvePart1(String input) {
     final List<String> lines = getLines(input);
-
     final int departingTime = parseInt(lines.get(0));
     final List<BusInfo> busInfos = getBusInfos(lines.get(1));
 
@@ -40,8 +38,6 @@ public class ShuttleSearch extends AbstractAdventSolution {
   @Override
   public Object solvePart2(String input) {
     final List<String> lines = getLines(input);
-
-    final int departingTime = parseInt(lines.get(0));
     final List<BusInfo> busInfos = getBusInfos(lines.get(1));
 
     return getEarliestTimestampOfConsecutiveDepartures(busInfos);
@@ -103,7 +99,7 @@ public class ShuttleSearch extends AbstractAdventSolution {
       }
     }
 
-    return minWaitingTime * busNumber;
+    return (long) minWaitingTime * busNumber;
   }
 
   private List<BusInfo> getBusInfos(String busInfosLine) {
@@ -120,9 +116,3 @@ public class ShuttleSearch extends AbstractAdventSolution {
   }
 }
 
-@RequiredArgsConstructor
-class BusInfo {
-
-  final int busOrder;
-  final int busId;
-}
