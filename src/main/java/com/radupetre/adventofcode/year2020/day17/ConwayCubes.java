@@ -1,7 +1,6 @@
 package com.radupetre.adventofcode.year2020.day17;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -21,16 +20,15 @@ public class ConwayCubes extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String input) {
+  public Object solvePart1(String input) {
     Cubes startingCubes = Cubes.parseCubes(input);
-    long activeCubesAfterSixCycles = countActiveCubesAfterCycles(startingCubes, 6);
-    log.info("Active cubes after 6 cycles: %s".formatted(activeCubesAfterSixCycles));
+    return countActiveCubesAfterCycles(startingCubes, 6);
+  }
 
+  @Override
+  public Object solvePart2(String input) {
     HyperCubes startingHyperCubes = HyperCubes.parseHyperCubes(input);
-    long activeHyperCubesAfterSixCycles = countActiveHyperCubesAfterCycles(startingHyperCubes, 6);
-    log.info("Active hyper cubes after 6 cycles: %s".formatted(activeHyperCubesAfterSixCycles));
-
-    return new Result(activeCubesAfterSixCycles, activeHyperCubesAfterSixCycles);
+    return countActiveHyperCubesAfterCycles(startingHyperCubes, 6);
   }
 
   private long countActiveCubesAfterCycles(Cubes currentCubes, int cycles) {

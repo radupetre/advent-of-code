@@ -4,7 +4,6 @@ import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.lang.Math.abs;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,22 +26,21 @@ public class RainRisk extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String allInstructions) {
+  public Object solvePart1(String allInstructions) {
     final List<Instruction> instructions = getLines(allInstructions).stream()
         .map(Instruction::new)
         .collect(Collectors.toList());
 
-    long distanceAfterShipMovements =
-        calculateDistanceAfterShipMovement(instructions);
-    log.info("Distance after executing ship instructions: %s"
-        .formatted(distanceAfterShipMovements));
+    return calculateDistanceAfterShipMovement(instructions);
+  }
 
-    long distanceAfterShipAndWaypointMovements =
-        calculateDistanceAfterShipAndWaypointMovement(instructions);
-    log.info("Distance after executing ship & waypoint instructions: %s"
-        .formatted(distanceAfterShipAndWaypointMovements));
+  @Override
+  public Object solvePart2(String allInstructions) {
+    final List<Instruction> instructions = getLines(allInstructions).stream()
+        .map(Instruction::new)
+        .collect(Collectors.toList());
 
-    return new Result(distanceAfterShipMovements, distanceAfterShipAndWaypointMovements);
+    return calculateDistanceAfterShipAndWaypointMovement(instructions);
   }
 
   private long calculateDistanceAfterShipAndWaypointMovement(List<Instruction> instructions) {

@@ -6,7 +6,6 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toMap;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import java.util.Map;
@@ -37,20 +36,25 @@ public class PassportProcessing extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String passportBatches) {
+  public Object solvePart1(String passportBatches) {
     final List<String> batches = getBatches(passportBatches, BATCH_SEPARATOR);
 
     final List<Map<String, String>> passportsWithFields = batches.stream()
         .map(this::extractPassportFields)
         .collect(Collectors.toList());
 
-    long passportCountWithMandatoryFields = countPassportsWithMandatoryFields(passportsWithFields);
-    log.info("Valid by nr of fields: %s".formatted(passportCountWithMandatoryFields));
+    return countPassportsWithMandatoryFields(passportsWithFields);
+  }
 
-    long passportsWithValidData = countPassportsWithValidData(passportsWithFields);
-    log.info("Valid by content of fields: %s".formatted(passportsWithValidData));
+  @Override
+  public Object solvePart2(String passportBatches) {
+    final List<String> batches = getBatches(passportBatches, BATCH_SEPARATOR);
 
-    return new Result(passportCountWithMandatoryFields, passportsWithValidData);
+    final List<Map<String, String>> passportsWithFields = batches.stream()
+        .map(this::extractPassportFields)
+        .collect(Collectors.toList());
+
+    return countPassportsWithValidData(passportsWithFields);
   }
 
   private long countPassportsWithMandatoryFields(List<Map<String, String>> passportsWithFields) {

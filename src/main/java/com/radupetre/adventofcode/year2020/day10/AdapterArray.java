@@ -9,7 +9,6 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.HashMap;
 import java.util.List;
@@ -32,19 +31,23 @@ public class AdapterArray extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String adapterValues) {
+  public Object solvePart1(String adapterValues) {
     final List<Integer> sortedAdapters = getLines(adapterValues).stream()
         .map(Integer::valueOf)
         .sorted()
         .collect(toList());
 
-    long joltDifferencesMultiplied = getJoltDifferencesMultiplied(sortedAdapters);
-    log.info("1 Jolt differences X 3 Jolt differences: %s".formatted(joltDifferencesMultiplied));
+    return getJoltDifferencesMultiplied(sortedAdapters);
+  }
 
-    long distinctArrangements = countDistinctAdapterArrangements(sortedAdapters);
-    log.info("Distinct adapter arrangements: %s".formatted(distinctArrangements));
+  @Override
+  public Object solvePart2(String adapterValues) {
+    final List<Integer> sortedAdapters = getLines(adapterValues).stream()
+        .map(Integer::valueOf)
+        .sorted()
+        .collect(toList());
 
-    return new Result(joltDifferencesMultiplied, distinctArrangements);
+    return countDistinctAdapterArrangements(sortedAdapters);
   }
 
   private long countDistinctAdapterArrangements(List<Integer> sortedAdapters) {
@@ -83,7 +86,7 @@ public class AdapterArray extends AbstractAdventSolution {
 
     // add the first difference to 0 outlet
     joltDifferenceByOccurrence.computeIfPresent(sortedAdapters.get(0), (k, v) -> ++v);
-    
+
     return joltDifferenceByOccurrence.get(1) * joltDifferenceByOccurrence.get(3);
   }
 }

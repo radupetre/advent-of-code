@@ -4,11 +4,15 @@ import static java.util.Comparator.comparing;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
+import java.util.Arrays;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StopWatch;
 
 @Service
+@Log4j2
 @RequiredArgsConstructor
 public class SolutionOrchestrator {
 
@@ -22,7 +26,9 @@ public class SolutionOrchestrator {
         .findFirst().orElseThrow(() -> new UnsupportedOperationException(
             String.format("No Solution solving advent for year:%s day:%s", year, day)));
 
-    solutionHandler.handle(adventSolution);
+    StopWatch solveWatch = getWatch();
+    solutionHandler.handle(adventSolution, solveWatch);
+    log.info(solveWatch.prettyPrint());
   }
 
   private boolean matchesContext(AbstractAdventSolution adventSolution,
@@ -31,8 +37,16 @@ public class SolutionOrchestrator {
   }
 
   public void runSolutions() {
+    StopWatch solveWatch = getWatch();
+
     solutions.stream()
         .sorted(comparing(AbstractAdventSolution::getSolveContext))
-        .forEach(solutionHandler::handle);
+        .forEach(solution -> solutionHandler.handle(solution, solveWatch));
+
+    log.info(solveWatch.prettyPrint());
+  }
+
+  private StopWatch getWatch() {
+    return new StopWatch("SolveWatch");
   }
 }

@@ -6,7 +6,6 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -29,19 +28,23 @@ public class ShuttleSearch extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String input) {
+  public Object solvePart1(String input) {
     final List<String> lines = getLines(input);
 
     final int departingTime = parseInt(lines.get(0));
     final List<BusInfo> busInfos = getBusInfos(lines.get(1));
 
-    long minWaitingTimeTimesBusNumber = getMinWaitingTimeTimesBusNumber(busInfos, departingTime);
-    log.info("Minimum Waiting Time * Bus Number: %s".formatted(minWaitingTimeTimesBusNumber));
+    return getMinWaitingTimeTimesBusNumber(busInfos, departingTime);
+  }
 
-    long earliestTimestamp = getEarliestTimestampOfConsecutiveDepartures(busInfos);
-    log.info("Earliest timestamp with consecutive departures: %s".formatted(earliestTimestamp));
+  @Override
+  public Object solvePart2(String input) {
+    final List<String> lines = getLines(input);
 
-    return new Result(minWaitingTimeTimesBusNumber, earliestTimestamp);
+    final int departingTime = parseInt(lines.get(0));
+    final List<BusInfo> busInfos = getBusInfos(lines.get(1));
+
+    return getEarliestTimestampOfConsecutiveDepartures(busInfos);
   }
 
   private long getEarliestTimestampOfConsecutiveDepartures(List<BusInfo> busInfos) {
@@ -119,6 +122,7 @@ public class ShuttleSearch extends AbstractAdventSolution {
 
 @RequiredArgsConstructor
 class BusInfo {
+
   final int busOrder;
   final int busId;
 }

@@ -3,7 +3,6 @@ package com.radupetre.adventofcode.year2020.day16;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,16 +26,17 @@ public class TicketTranslation extends AbstractAdventSolution {
   List<Ticket> validTickets = new ArrayList<>();
 
   @Override
-  public Result solve(String input) {
+  public Object solvePart1(String input) {
     notes = new TicketNotes(input);
 
-    int ticketErrorRate = calculateTicketErrorRate();
-    log.info("Ticket scanning error rate: %s".formatted(ticketErrorRate));
+    return calculateTicketErrorRate();
+  }
 
-    int ownTicketMultipliedValues = multiplyValuesOnOwnTicket();
-    log.info("Multiplied values on own ticket: %s".formatted(ownTicketMultipliedValues));
+  @Override
+  public Object solvePart2(String input) {
+    notes = new TicketNotes(input);
 
-    return new Result(ticketErrorRate, ownTicketMultipliedValues);
+    return multiplyValuesOnOwnTicket();
   }
 
   private int calculateTicketErrorRate() {
@@ -84,7 +84,7 @@ public class TicketTranslation extends AbstractAdventSolution {
     List<Range> consolidatedRanges = new ArrayList<>();
     Range currentRange = sortedRanges.get(0);
 
-    for (Range range : sortedRanges){
+    for (Range range : sortedRanges) {
       if (currentRange.hasOverlap(range)) {
         currentRange = currentRange.merge(range);
       } else {

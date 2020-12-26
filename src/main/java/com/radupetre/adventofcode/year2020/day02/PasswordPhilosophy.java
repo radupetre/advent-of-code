@@ -5,7 +5,6 @@ import static java.lang.Integer.parseInt;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import java.util.function.Function;
@@ -26,20 +25,25 @@ public class PasswordPhilosophy extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String input) {
+  public Object solvePart1(String input) {
     final List<PasswordPolicy> passwordPolicies = getLines(input)
         .stream()
         .filter(StringUtils::hasLength)
         .map(PasswordPolicy::new)
         .collect(toList());
 
-    long validPasswordsByOccurrence = countValid(passwordPolicies, this::isValidOccurrence);
-    log.info("Valid passwords by occurrence: %s".formatted(validPasswordsByOccurrence));
+    return countValid(passwordPolicies, this::isValidOccurrence);
+  }
 
-    long validPasswordsByPosition = countValid(passwordPolicies, this::isValidPosition);
-    log.info("Valid passwords by positions: %s".formatted(validPasswordsByPosition));
+  @Override
+  public Object solvePart2(String input) {
+    final List<PasswordPolicy> passwordPolicies = getLines(input)
+        .stream()
+        .filter(StringUtils::hasLength)
+        .map(PasswordPolicy::new)
+        .collect(toList());
 
-    return new Result(validPasswordsByOccurrence, validPasswordsByPosition);
+    return countValid(passwordPolicies, this::isValidPosition);
   }
 
   private long countValid(

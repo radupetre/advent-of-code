@@ -4,7 +4,6 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import com.radupetre.adventofcode.utils.StringUtility;
 import java.nio.CharBuffer;
@@ -45,16 +44,17 @@ public class SeatingSystem extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String seatPlanString) {
+  public Object solvePart1(String seatPlanString) {
     SeatPlan seatPlan = new SeatPlan(seatPlanString);
 
-    long adjacentOccupiedSeats = getOccupiedSeatsAfterMoving(seatPlan, ADJACENT_NEIGHBOURS, FOUR);
-    log.info("Immediate occupied seats after rounds: %s".formatted(adjacentOccupiedSeats));
+    return getOccupiedSeatsAfterMoving(seatPlan, ADJACENT_NEIGHBOURS, FOUR);
+  }
 
-    long visibleOccupiedSeats = getOccupiedSeatsAfterMoving(seatPlan, VISIBLE_NEIGHBOURS, FIVE);
-    log.info("Visible occupied seats after rounds: %s".formatted(visibleOccupiedSeats));
+  @Override
+  public Object solvePart2(String seatPlanString) {
+    SeatPlan seatPlan = new SeatPlan(seatPlanString);
 
-    return new Result(adjacentOccupiedSeats, visibleOccupiedSeats);
+    return getOccupiedSeatsAfterMoving(seatPlan, VISIBLE_NEIGHBOURS, FIVE);
   }
 
   private long getOccupiedSeatsAfterMoving(SeatPlan masterSeatPlan, boolean onlyAdjacent,

@@ -3,7 +3,6 @@ package com.radupetre.adventofcode.year2020.day15;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,18 +24,21 @@ public class RambunctiousRecitation extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String inputNumbers) {
+  public Object solvePart1(String inputNumbers) {
     final List<Integer> startingNumbers = Arrays.stream(inputNumbers.split(","))
         .map(Integer::valueOf)
         .collect(toList());
 
-    int numberAfterFewSeps = getNthSpokenNumber(startingNumbers, 2020);
-    log.info("2020th Spoken Number: %s".formatted(numberAfterFewSeps));
+    return getNthSpokenNumber(startingNumbers, 2020);
+  }
 
-    int numberAfterManySteps = getNthSpokenNumber(startingNumbers, 30000000);
-    log.info("30millionth Spoken Number: %s".formatted(numberAfterManySteps));
+  @Override
+  public Object solvePart2(String inputNumbers) {
+    final List<Integer> startingNumbers = Arrays.stream(inputNumbers.split(","))
+        .map(Integer::valueOf)
+        .collect(toList());
 
-    return new Result(numberAfterFewSeps, numberAfterManySteps);
+    return getNthSpokenNumber(startingNumbers, 30_000_000);
   }
 
   private int getNthSpokenNumber(List<Integer> startingNumbers, int targetPosition) {

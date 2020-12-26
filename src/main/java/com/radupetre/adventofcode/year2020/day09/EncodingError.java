@@ -5,7 +5,6 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.HashSet;
 import java.util.List;
@@ -28,7 +27,17 @@ public class EncodingError extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String allNumbers) {
+  public Object solvePart1(String allNumbers) {
+    final List<Long> numbers = getLines(allNumbers).stream()
+        .map(Long::valueOf)
+        .collect(toList());
+
+    return findFirstNumberWithMissingSum(numbers, 25);
+
+  }
+
+  @Override
+  public Object solvePart2(String allNumbers) {
     final List<Long> numbers = getLines(allNumbers).stream()
         .map(Long::valueOf)
         .collect(toList());
@@ -36,10 +45,7 @@ public class EncodingError extends AbstractAdventSolution {
     long numberWithMissingSum = findFirstNumberWithMissingSum(numbers, 25);
     log.info("First number with missing sum: %s".formatted(numberWithMissingSum));
 
-    long minPlusMaxInIntervalWithSum = minPlusMaxInIntervalWithSum(numbers, numberWithMissingSum);
-    log.info("Min + Max in interval with sum: %s".formatted(minPlusMaxInIntervalWithSum));
-
-    return new Result(numberWithMissingSum, minPlusMaxInIntervalWithSum);
+    return minPlusMaxInIntervalWithSum(numbers, numberWithMissingSum);
   }
 
   private long minPlusMaxInIntervalWithSum(List<Long> numbers, long requiredSum) {

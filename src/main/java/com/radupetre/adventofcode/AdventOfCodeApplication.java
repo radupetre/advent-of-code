@@ -8,12 +8,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class AdventOfCodeApplication {
 
-	public static void main(String[] args) {
-		final ConfigurableApplicationContext context = SpringApplication
-				.run(AdventOfCodeApplication.class, args);
-		SolutionOrchestrator solutionOrchestrator = context.getBean(SolutionOrchestrator.class);
+  public static void main(String[] args) {
+    final ConfigurableApplicationContext context = SpringApplication
+        .run(AdventOfCodeApplication.class, args);
+    SolutionOrchestrator solutionOrchestrator = context.getBean(SolutionOrchestrator.class);
 
-		solutionOrchestrator.runSolutions();
-	}
+    solutionOrchestrator.runSolutions();
+  }
 
 }

@@ -4,7 +4,6 @@ import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
@@ -23,20 +22,25 @@ public class BinaryBoarding extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String boardingPasses) {
+  public Object solvePart1(String boardingPasses) {
     final List<Integer> seatIds = getLines(boardingPasses)
         .stream()
         .mapToInt(this::calculateSeatId)
         .boxed()
         .collect(toList());
 
-    int highestSeatId = getHighestSeatId(seatIds);
-    log.info("Highest seatId: %s".formatted(highestSeatId));
+    return getHighestSeatId(seatIds);
+  }
 
-    int missingSeatId = getMissingSeatId(seatIds);
-    log.info("Missing seatId: %s".formatted(missingSeatId));
+  @Override
+  public Object solvePart2(String boardingPasses) {
+    final List<Integer> seatIds = getLines(boardingPasses)
+        .stream()
+        .mapToInt(this::calculateSeatId)
+        .boxed()
+        .collect(toList());
 
-    return new Result(highestSeatId, missingSeatId);
+    return getMissingSeatId(seatIds);
   }
 
   private int getMissingSeatId(List<Integer> seatIds) {

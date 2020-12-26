@@ -4,5 +4,7 @@ public abstract class AbstractAdventSolution {
 
   abstract public SolveContext getSolveContext();
 
-  abstract public Result solve(String input);
+  abstract public Object solvePart1(String input);
+
+  abstract public Object solvePart2(String input);
 }

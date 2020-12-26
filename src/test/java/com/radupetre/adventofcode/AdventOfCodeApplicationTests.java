@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.radupetre.adventofcode.service.SolutionHandler;
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
+import com.radupetre.adventofcode.utils.StringUtility;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +33,19 @@ class AdventOfCodeApplicationTests {
     String expectedOutput = getOutput(solveContext);
 
     // when
-    final String actualOutput = solution.solve(input).toString();
+    String part1 = String.valueOf(solution.solvePart1(input));
+    String part2 = String.valueOf(solution.solvePart2(input));
 
     // then
-    assertThat(actualOutput)
-        .as("Output for day %s year %s".formatted(solveContext.getDay(), solveContext.getYear()))
-        .isEqualTo(expectedOutput);
+    final List<String> expectedOutputLines = StringUtility.getLines(expectedOutput);
+    assertThat(part1)
+        .as("Output for day %s year %s part1"
+            .formatted(solveContext.getDay(), solveContext.getYear()))
+        .isEqualTo(expectedOutputLines.get(0));
+    assertThat(part2)
+        .as("Output for day %s year %s part2"
+            .formatted(solveContext.getDay(), solveContext.getYear()))
+        .isEqualTo(expectedOutputLines.get(1));
   }
 
   private String getOutput(SolveContext solveContext) {

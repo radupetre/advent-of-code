@@ -1,7 +1,6 @@
 package com.radupetre.adventofcode.year2020.day18;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import com.radupetre.adventofcode.utils.StringUtility;
 import java.util.Set;
@@ -34,7 +33,7 @@ public class OperationOrder extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String input) {
+  public Object solvePart1(String input) {
 
     final long sum1 = StringUtility.getLines(input)
         .stream()
@@ -42,7 +41,13 @@ public class OperationOrder extends AbstractAdventSolution {
         .sum();
     log.info("Sum of all results: %s".formatted(sum1));
 
-    return new Result(sum1, 0);
+    return sum1;
+  }
+
+  @Override
+  public Object solvePart2(String input) {
+
+    return null;
   }
 
   private Long evaluateFormulaResult(String formula) {
@@ -57,15 +62,15 @@ public class OperationOrder extends AbstractAdventSolution {
         // this is an operator
         operators.push(formulaPart);
 
-      } else if(isOpenParenthesis(formulaPart)) {
-          // this is an open parenthesis
+      } else if (isOpenParenthesis(formulaPart)) {
+        // this is an open parenthesis
         operators.push(formulaPart);
 
-      } else if(isCloseParenthesis(formulaPart)) {
+      } else if (isCloseParenthesis(formulaPart)) {
         // this is an open parenthesis
         operators.pop();
 
-        while(!operators.isEmpty() && isOperator(operators.peek())) {
+        while (!operators.isEmpty() && isOperator(operators.peek())) {
           Long newValue = calculate(values.pop(), values.pop(), operators.pop());
           values.push(newValue);
         }

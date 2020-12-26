@@ -9,7 +9,6 @@ import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.Collection;
 import java.util.HashMap;
@@ -35,19 +34,23 @@ public class HandyHaversacks extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String allRules) {
+  public Object solvePart1(String allRules) {
     final List<BagRule> bagRules = getLines(allRules).stream()
         .filter(StringUtils::hasLength)
         .map(BagRule::new)
         .collect(toList());
 
-    long bagsContainingTarget = countBagsContainingTarget(bagRules, "shiny gold");
-    log.info("Bags containing shiny gold: %s".formatted(bagsContainingTarget));
+    return countBagsContainingTarget(bagRules, "shiny gold");
+  }
 
-    long bagsContainedInTarget = countBagsContainedInTarget(bagRules, "shiny gold") - 1;
-    log.info("Bags contained in shiny gold: %s".formatted(bagsContainedInTarget));
+  @Override
+  public Object solvePart2(String allRules) {
+    final List<BagRule> bagRules = getLines(allRules).stream()
+        .filter(StringUtils::hasLength)
+        .map(BagRule::new)
+        .collect(toList());
 
-    return new Result(bagsContainingTarget, bagsContainedInTarget);
+    return countBagsContainedInTarget(bagRules, "shiny gold") - 1;
   }
 
   private long countBagsContainedInTarget(List<BagRule> bagRules, String targetBag) {

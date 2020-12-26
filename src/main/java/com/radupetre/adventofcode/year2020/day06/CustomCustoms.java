@@ -5,7 +5,6 @@ import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.util.stream.Collectors.toSet;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
 import java.util.Set;
@@ -27,18 +26,19 @@ public class CustomCustoms extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String declarations) {
+  public Object solvePart1(String declarations) {
     final List<String> declarationBatches = getBatches(declarations, BATCH_SEPARATOR);
 
-    long distinctAnswersInDeclarationBatch = countDistinctAnswersInDeclarationBatches(
+    return countDistinctAnswersInDeclarationBatches(
         declarationBatches);
-    log.info("Sum of distinct answers: %s".formatted(distinctAnswersInDeclarationBatch));
+  }
 
-    long commonAnswersInDeclarationBatches = countCommonAnswersInDeclarationBatches(
+  @Override
+  public Object solvePart2(String declarations) {
+    final List<String> declarationBatches = getBatches(declarations, BATCH_SEPARATOR);
+
+    return countCommonAnswersInDeclarationBatches(
         declarationBatches);
-    log.info("Sum of common answers: %s".formatted(commonAnswersInDeclarationBatches));
-
-    return new Result(distinctAnswersInDeclarationBatch, commonAnswersInDeclarationBatches);
   }
 
   private long countCommonAnswersInDeclarationBatches(List<String> declarationBatches) {

@@ -4,7 +4,6 @@ import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.util.stream.Collectors.toSet;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,19 +26,23 @@ public class ReportRepair extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String input) {
+  public Object solvePart1(String input) {
     final Set<Integer> entries = getLines(input)
         .stream()
         .map(Integer::valueOf)
         .collect(toSet());
 
-    int productOfPairWithSum = productOfPairWithSum(entries, 2020);
-    log.info("Product of pair with sum 2020: %s".formatted(productOfPairWithSum));
+    return productOfPairWithSum(entries, 2020);
+  }
 
-    int productOfTripletWithSum = productOfTripletWithSum(entries, 2020);
-    log.info("Product of triplet with sum 2020: %s".formatted(productOfTripletWithSum));
+  @Override
+  public Object solvePart2(String input) {
+    final Set<Integer> entries = getLines(input)
+        .stream()
+        .map(Integer::valueOf)
+        .collect(toSet());
 
-    return new Result(productOfPairWithSum, productOfTripletWithSum);
+    return productOfTripletWithSum(entries, 2020);
   }
 
   private int productOfPairWithSum(Set<Integer> entries, int expectedSum) {

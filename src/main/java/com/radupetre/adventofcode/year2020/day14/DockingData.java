@@ -36,7 +36,7 @@ public class DockingData extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String input) {
+  public Object solvePart1(String input) {
     List<String> inputLines = getLines(input).stream()
         .collect(toList());
 
@@ -44,7 +44,19 @@ public class DockingData extends AbstractAdventSolution {
     log.info("Memory Total for values mask: %s".formatted(result.getFirst()));
     log.info("Memory Total for address mask: %s".formatted(result.getSecond()));
 
-    return result;
+    return result.getFirst();
+  }
+
+  @Override
+  public Object solvePart2(String input) {
+    List<String> inputLines = getLines(input).stream()
+        .collect(toList());
+
+    Result result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
+    log.info("Memory Total for values mask: %s".formatted(result.getFirst()));
+    log.info("Memory Total for address mask: %s".formatted(result.getSecond()));
+
+    return result.getSecond();
   }
 
   private Result getMaskedValuesSumAndMaskedAddressesSum(List<String> inputLines) {

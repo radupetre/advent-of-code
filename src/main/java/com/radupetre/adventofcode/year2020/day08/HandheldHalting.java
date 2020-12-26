@@ -6,7 +6,6 @@ import static com.radupetre.adventofcode.year2020.day08.Operation.JMP;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.EnumSet;
 import java.util.HashSet;
@@ -36,18 +35,21 @@ public class HandheldHalting extends AbstractAdventSolution {
   }
 
   @Override
-  public Result solve(String allInstructions) {
+  public Object solvePart1(String allInstructions) {
     instructions = getLines(allInstructions).stream()
         .map(Instruction::new)
         .collect(toList());
 
-    int accumulatorBeforeFirstLoop = getAccumulatorBeforeFirstLoop();
-    log.info("Accumulator before loop: %s".formatted(accumulatorBeforeFirstLoop));
+    return getAccumulatorBeforeFirstLoop();
+  }
 
-    int accumulatorWithoutLoop = getAccumulatorWithoutLoop();
-    log.info("Accumulator without loop: %s".formatted(accumulatorWithoutLoop));
+  @Override
+  public Object solvePart2(String allInstructions) {
+    instructions = getLines(allInstructions).stream()
+        .map(Instruction::new)
+        .collect(toList());
 
-    return new Result(accumulatorBeforeFirstLoop, accumulatorWithoutLoop);
+    return getAccumulatorWithoutLoop();
   }
 
   private int getAccumulatorBeforeFirstLoop() {

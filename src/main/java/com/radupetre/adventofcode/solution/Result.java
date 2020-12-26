@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class Result {
+
   private final String first;
   private final String second;
 

@@ -14,6 +14,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.util.StopWatch;
 
 @Service
 @Log4j2
@@ -23,12 +24,21 @@ public class SolutionHandler {
 
   private final static String OUTPUT_PATH_TEMPLATE = "classpath:output/year%d/day%02d/output.txt";
 
-  public void handle(AbstractAdventSolution adventSolution) {
+  private final static String PART_ID = "%s-%02d-%s";
+
+  public void handle(AbstractAdventSolution adventSolution, StopWatch solveWatch) {
     final SolveContext solveContext = adventSolution.getSolveContext();
     String input = fetchInput(solveContext);
-    log.info(String.format("Solving advent for year:%s day:%s", solveContext.getYear(),
+    log.info("Solving advent for year:%s day:%s".formatted(solveContext.getYear(),
         solveContext.getDay()));
-    adventSolution.solve(input);
+
+    solveWatch.start(PART_ID.formatted(solveContext.getYear(), solveContext.getDay(), "part1"));
+    adventSolution.solvePart1(input);
+    solveWatch.stop();
+
+    solveWatch.start(PART_ID.formatted(solveContext.getYear(), solveContext.getDay(), "part2"));
+    adventSolution.solvePart2(input);
+    solveWatch.stop();
   }
 
   public String fetchInput(SolveContext solveContext) {
