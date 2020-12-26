@@ -28,23 +28,21 @@ public class EncodingError extends AbstractAdventSolution {
 
   @Override
   public Object solvePart1(String allNumbers) {
-    final List<Long> numbers = getLines(allNumbers).stream()
-        .map(Long::valueOf)
-        .collect(toList());
-
+    final List<Long> numbers = extractNumbers(allNumbers);
     return findFirstNumberWithMissingSum(numbers, 25);
-
   }
 
   @Override
   public Object solvePart2(String allNumbers) {
-    final List<Long> numbers = getLines(allNumbers).stream()
+    final List<Long> numbers = extractNumbers(allNumbers);
+    long numberWithMissingSum = findFirstNumberWithMissingSum(numbers, 25);
+    return minPlusMaxInIntervalWithSum(numbers, numberWithMissingSum);
+  }
+
+  private List<Long> extractNumbers(String allNumbers) {
+    return getLines(allNumbers).stream()
         .map(Long::valueOf)
         .collect(toList());
-
-    long numberWithMissingSum = findFirstNumberWithMissingSum(numbers, 25);
-
-    return minPlusMaxInIntervalWithSum(numbers, numberWithMissingSum);
   }
 
   private long minPlusMaxInIntervalWithSum(List<Long> numbers, long requiredSum) {
@@ -125,9 +123,3 @@ public class EncodingError extends AbstractAdventSolution {
   }
 }
 
-@RequiredArgsConstructor
-class Interval {
-
-  final int firstPosition;
-  final int lastPosition;
-}

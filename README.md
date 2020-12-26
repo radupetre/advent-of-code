@@ -5,18 +5,18 @@ Java solutions for [Advent of Code].
 
 ### 2020 Calendar
 
-| Day | Challenge | Solution |
-| ------ | ------ | ------ |
-| 1 | [Report Repair][2020 day 01] | [ReportRepair.java](src/main/java/com/radupetre/adventofcode/year2020/day01/ReportRepair.java) |
-| 2 | [Password Philosophy][2020 day 02] | [PasswordPhilosophy.java](src/main/java/com/radupetre/adventofcode/year2020/day02/PasswordPhilosophy.java) |
-| 3 | [Toboggan Trajectory][2020 day 03] | [TobogganTrajectory.java](src/main/java/com/radupetre/adventofcode/year2020/day03/TobogganTrajectory.java) |
-| 4 | [Passport Processing][2020 day 04] | [PassportProcessing.java](src/main/java/com/radupetre/adventofcode/year2020/day04/PassportProcessing.java) |
-| 5 | [Binary Boarding][2020 day 05] | [BinaryBoarding.java](src/main/java/com/radupetre/adventofcode/year2020/day05/BinaryBoarding.java) |
-| 6 | [Custom Customs][2020 day 06] | [CustomCustoms.java](src/main/java/com/radupetre/adventofcode/year2020/day06/CustomCustoms.java) |
-| 7 | [Handy Haversacks][2020 day 07] | [HandyHaversacks.java](src/main/java/com/radupetre/adventofcode/year2020/day07/HandyHaversacks.java) |
-| 8 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](src/main/java/com/radupetre/adventofcode/year2020/day08/HandheldHalting.java) |
-| 9 | [Encoding Error][2020 day 09] | [EncodingError.java](src/main/java/com/radupetre/adventofcode/year2020/day09/EncodingError.java) |
-| 10 | [Adapter Array][2020 day 10] | [AdapterArray.java](src/main/java/com/radupetre/adventofcode/year2020/day10/AdapterArray.java) |
+| Day | Challenge | Solution | Part 1 (ms) | Part 2 (ms) |
+| ------ | ------ | ------ | ------ | ------ |
+| 1 | [Report Repair][2020 day 01] | [ReportRepair.java](src/main/java/com/radupetre/adventofcode/year2020/day01/ReportRepair.java) | ⏱️1.521 | ⏱️2.201 |
+| 2 | [Password Philosophy][2020 day 02] | [PasswordPhilosophy.java](src/main/java/com/radupetre/adventofcode/year2020/day02/PasswordPhilosophy.java) | ⏱️5.957 | ⏱️2.439 |
+| 3 | [Toboggan Trajectory][2020 day 03] | [TobogganTrajectory.java](src/main/java/com/radupetre/adventofcode/year2020/day03/TobogganTrajectory.java) | ⏱️0.509 | ⏱️1.690 |
+| 4 | [Passport Processing][2020 day 04] | [PassportProcessing.java](src/main/java/com/radupetre/adventofcode/year2020/day04/PassportProcessing.java) | ⏱️7.536 | ⏱️15.257 |
+| 5 | [Binary Boarding][2020 day 05] | [BinaryBoarding.java](src/main/java/com/radupetre/adventofcode/year2020/day05/BinaryBoarding.java) | ⏱️2.751 | ⏱️0.998 |
+| 6 | [Custom Customs][2020 day 06] | [CustomCustoms.java](src/main/java/com/radupetre/adventofcode/year2020/day06/CustomCustoms.java) | ⏱️3.125 | ⏱️9.161 |
+| 7 | [Handy Haversacks][2020 day 07] | [HandyHaversacks.java](src/main/java/com/radupetre/adventofcode/year2020/day07/HandyHaversacks.java) | ⏱️9.286 | ⏱️7.431 |
+| 8 | [Handheld Halting][2020 day 08] | [HandheldHalting.java](src/main/java/com/radupetre/adventofcode/year2020/day08/HandheldHalting.java) | ⏱️1.314 | ⏱️4.925 |
+| 9 | [Encoding Error][2020 day 09] | [EncodingError.java](src/main/java/com/radupetre/adventofcode/year2020/day09/EncodingError.java) | ⏱️3.323 | ⏱️1.609 |
+| 10 | [Adapter Array][2020 day 10] | [AdapterArray.java](src/main/java/com/radupetre/adventofcode/year2020/day10/AdapterArray.java) | ⏱️1.892 | ⏱️0.170 |
 | 11 | [Seating System][2020 day 11] | [SeatingSystem.java](src/main/java/com/radupetre/adventofcode/year2020/day11/SeatingSystem.java) |
 | 12 | [Rain Risk][2020 day 12] | [RainRisk.java](src/main/java/com/radupetre/adventofcode/year2020/day12/RainRisk.java) |
 | 13 | [Shuttle Search][2020 day 13] | [ShuttleSearch.java](src/main/java/com/radupetre/adventofcode/year2020/day13/ShuttleSearch.java) |

@@ -28,6 +28,8 @@ import org.springframework.util.StringUtils;
 @Log4j2
 public class HandyHaversacks extends AbstractAdventSolution {
 
+  public static final String SHINY_GOLD_BAG = "shiny gold";
+
   @Override
   public SolveContext getSolveContext() {
     return new SolveContext(2020, 7);
@@ -35,22 +37,21 @@ public class HandyHaversacks extends AbstractAdventSolution {
 
   @Override
   public Object solvePart1(String allRules) {
-    final List<BagRule> bagRules = getLines(allRules).stream()
-        .filter(StringUtils::hasLength)
-        .map(BagRule::new)
-        .collect(toList());
-
-    return countBagsContainingTarget(bagRules, "shiny gold");
+    final List<BagRule> bagRules = parseBagRules(allRules);
+    return countBagsContainingTarget(bagRules, SHINY_GOLD_BAG);
   }
 
   @Override
   public Object solvePart2(String allRules) {
-    final List<BagRule> bagRules = getLines(allRules).stream()
+    final List<BagRule> bagRules = parseBagRules(allRules);
+    return countBagsContainedInTarget(bagRules, SHINY_GOLD_BAG) - 1;
+  }
+
+  private List<BagRule> parseBagRules(String allRules) {
+    return getLines(allRules).stream()
         .filter(StringUtils::hasLength)
         .map(BagRule::new)
         .collect(toList());
-
-    return countBagsContainedInTarget(bagRules, "shiny gold") - 1;
   }
 
   private long countBagsContainedInTarget(List<BagRule> bagRules, String targetBag) {
@@ -114,43 +115,3 @@ public class HandyHaversacks extends AbstractAdventSolution {
   }
 }
 
-@Getter
-class BagRule {
-
-  private static final String NO_INNER_BAGS = "no other bags.";
-
-  private final String name;
-  private final List<InnerBag> innerBags;
-
-  BagRule(String ruleString) {
-    final String[] ruleFragments = ruleString.split("contain");
-    this.name = ruleFragments[0]
-        .replaceAll("bag.", "")
-        .trim();
-
-    if (NO_INNER_BAGS.equals(ruleFragments[1].trim())) {
-      this.innerBags = List.of();
-    } else {
-      final String[] innerBagsFragments = ruleFragments[1].split(",");
-      this.innerBags = stream(innerBagsFragments)
-          .map(String::trim)
-          .map(InnerBag::new)
-          .collect(toList());
-    }
-  }
-}
-
-@Getter
-class InnerBag {
-
-  private final String name;
-  private final int quantity;
-
-  InnerBag(String innerBagString) {
-    this.quantity = parseInt(innerBagString.split(" ")[0]);
-    this.name = innerBagString
-        .replaceAll("\\d", "")
-        .replaceAll("bag.*", "")
-        .trim();
-  }
-}

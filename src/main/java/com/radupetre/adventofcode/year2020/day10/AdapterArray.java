@@ -32,22 +32,21 @@ public class AdapterArray extends AbstractAdventSolution {
 
   @Override
   public Object solvePart1(String adapterValues) {
-    final List<Integer> sortedAdapters = getLines(adapterValues).stream()
-        .map(Integer::valueOf)
-        .sorted()
-        .collect(toList());
-
+    final List<Integer> sortedAdapters = getSortedAdapters(adapterValues);
     return getJoltDifferencesMultiplied(sortedAdapters);
   }
 
   @Override
   public Object solvePart2(String adapterValues) {
-    final List<Integer> sortedAdapters = getLines(adapterValues).stream()
+    final List<Integer> sortedAdapters = getSortedAdapters(adapterValues);
+    return countDistinctAdapterArrangements(sortedAdapters);
+  }
+
+  private List<Integer> getSortedAdapters(String adapterValues) {
+    return getLines(adapterValues).stream()
         .map(Integer::valueOf)
         .sorted()
         .collect(toList());
-
-    return countDistinctAdapterArrangements(sortedAdapters);
   }
 
   private long countDistinctAdapterArrangements(List<Integer> sortedAdapters) {
