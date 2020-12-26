@@ -4,7 +4,6 @@ import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
-import com.radupetre.adventofcode.solution.Result;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Service;
 
 /**
@@ -40,11 +40,9 @@ public class DockingData extends AbstractAdventSolution {
     List<String> inputLines = getLines(input).stream()
         .collect(toList());
 
-    Result result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
-    log.info("Memory Total for values mask: %s".formatted(result.getFirst()));
-    log.info("Memory Total for address mask: %s".formatted(result.getSecond()));
+    Pair result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
 
-    return result.getFirst();
+    return result.getLeft();
   }
 
   @Override
@@ -52,14 +50,12 @@ public class DockingData extends AbstractAdventSolution {
     List<String> inputLines = getLines(input).stream()
         .collect(toList());
 
-    Result result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
-    log.info("Memory Total for values mask: %s".formatted(result.getFirst()));
-    log.info("Memory Total for address mask: %s".formatted(result.getSecond()));
+    Pair result = getMaskedValuesSumAndMaskedAddressesSum(inputLines);
 
-    return result.getSecond();
+    return result.getRight();
   }
 
-  private Result getMaskedValuesSumAndMaskedAddressesSum(List<String> inputLines) {
+  private Pair getMaskedValuesSumAndMaskedAddressesSum(List<String> inputLines) {
     Map<BigInteger, BigInteger> maskedValuedByAddress = new HashMap<>();
     Map<BigInteger, BigInteger> valuesByMaskedAddress = new HashMap<>();
 
@@ -95,7 +91,7 @@ public class DockingData extends AbstractAdventSolution {
       }
     }
 
-    return new Result(sumMemoryValues(maskedValuedByAddress),
+    return Pair.of(sumMemoryValues(maskedValuedByAddress),
         sumMemoryValues(valuesByMaskedAddress));
   }
 

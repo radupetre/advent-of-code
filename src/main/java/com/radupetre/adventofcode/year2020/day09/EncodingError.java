@@ -43,7 +43,6 @@ public class EncodingError extends AbstractAdventSolution {
         .collect(toList());
 
     long numberWithMissingSum = findFirstNumberWithMissingSum(numbers, 25);
-    log.info("First number with missing sum: %s".formatted(numberWithMissingSum));
 
     return minPlusMaxInIntervalWithSum(numbers, numberWithMissingSum);
   }

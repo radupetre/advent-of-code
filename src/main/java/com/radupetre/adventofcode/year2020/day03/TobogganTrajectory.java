@@ -6,6 +6,7 @@ import static java.util.Arrays.asList;
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.List;
+import java.util.stream.Stream;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -26,28 +27,13 @@ public class TobogganTrajectory extends AbstractAdventSolution {
   @Override
   public Object solvePart1(String map) {
     List<String> mapLines = getLines(map);
-
     return countTreesOnSlope(mapLines, 3, 1);
   }
 
   @Override
   public Object solvePart2(String map) {
     List<String> mapLines = getLines(map);
-
     return multiplyTreesOnAllSlopes(mapLines);
-  }
-
-  private long multiplyTreesOnAllSlopes(List<String> mapLines) {
-    return asList(
-        countTreesOnSlope(mapLines, 1, 1),
-        countTreesOnSlope(mapLines, 3, 1),
-        countTreesOnSlope(mapLines, 5, 1),
-        countTreesOnSlope(mapLines, 7, 1),
-        countTreesOnSlope(mapLines, 1, 2))
-        .stream()
-        .mapToLong(Long::valueOf)
-        .reduce((a, b) -> a * b)
-        .getAsLong();
   }
 
   private int countTreesOnSlope(List<String> mapLines, int slopeColumns, int slopeRows) {
@@ -68,5 +54,17 @@ public class TobogganTrajectory extends AbstractAdventSolution {
     } while (currentRow < maxRow);
 
     return treeCount;
+  }
+
+  private long multiplyTreesOnAllSlopes(List<String> mapLines) {
+    return Stream.of(
+        countTreesOnSlope(mapLines, 1, 1),
+        countTreesOnSlope(mapLines, 3, 1),
+        countTreesOnSlope(mapLines, 5, 1),
+        countTreesOnSlope(mapLines, 7, 1),
+        countTreesOnSlope(mapLines, 1, 2))
+        .mapToLong(Long::valueOf)
+        .reduce((a, b) -> a * b)
+        .getAsLong();
   }
 }

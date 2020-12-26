@@ -1,7 +1,6 @@
 package com.radupetre.adventofcode.year2020.day02;
 
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
-import static java.lang.Integer.parseInt;
 import static java.util.stream.Collectors.toList;
 
 import com.radupetre.adventofcode.solution.AbstractAdventSolution;
@@ -26,24 +25,23 @@ public class PasswordPhilosophy extends AbstractAdventSolution {
 
   @Override
   public Object solvePart1(String input) {
-    final List<PasswordPolicy> passwordPolicies = getLines(input)
-        .stream()
-        .filter(StringUtils::hasLength)
-        .map(PasswordPolicy::new)
-        .collect(toList());
-
+    final List<PasswordPolicy> passwordPolicies = parsePasswordPolicies(input);
     return countValid(passwordPolicies, this::isValidOccurrence);
   }
 
   @Override
   public Object solvePart2(String input) {
-    final List<PasswordPolicy> passwordPolicies = getLines(input)
+    final List<PasswordPolicy> passwordPolicies = parsePasswordPolicies(input);
+
+    return countValid(passwordPolicies, this::isValidPosition);
+  }
+
+  private List<PasswordPolicy> parsePasswordPolicies(String input) {
+    return getLines(input)
         .stream()
         .filter(StringUtils::hasLength)
         .map(PasswordPolicy::new)
         .collect(toList());
-
-    return countValid(passwordPolicies, this::isValidPosition);
   }
 
   private long countValid(
@@ -82,20 +80,3 @@ public class PasswordPhilosophy extends AbstractAdventSolution {
   }
 }
 
-class PasswordPolicy {
-
-  final int minOccurrence;
-  final int maxOccurrence;
-  final char mandatoryChar;
-  final String password;
-
-  PasswordPolicy(String passwordPolicy) {
-    final String[] policyFragments = passwordPolicy.split(" ");
-    this.password = policyFragments[2].trim();
-    this.mandatoryChar = policyFragments[1].charAt(0);
-
-    final String[] occurrenceFragments = policyFragments[0].split("-");
-    this.minOccurrence = parseInt(occurrenceFragments[0]);
-    this.maxOccurrence = parseInt(occurrenceFragments[1]);
-  }
-}

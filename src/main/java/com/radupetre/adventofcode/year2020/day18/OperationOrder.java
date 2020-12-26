@@ -39,7 +39,6 @@ public class OperationOrder extends AbstractAdventSolution {
         .stream()
         .mapToLong(this::evaluateFormulaResult)
         .sum();
-    log.info("Sum of all results: %s".formatted(sum1));
 
     return sum1;
   }

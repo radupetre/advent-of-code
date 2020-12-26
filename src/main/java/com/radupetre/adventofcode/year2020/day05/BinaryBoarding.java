@@ -23,24 +23,22 @@ public class BinaryBoarding extends AbstractAdventSolution {
 
   @Override
   public Object solvePart1(String boardingPasses) {
-    final List<Integer> seatIds = getLines(boardingPasses)
-        .stream()
-        .mapToInt(this::calculateSeatId)
-        .boxed()
-        .collect(toList());
-
+    List<Integer> seatIds = calculateSeatIds(boardingPasses);
     return getHighestSeatId(seatIds);
   }
 
   @Override
   public Object solvePart2(String boardingPasses) {
-    final List<Integer> seatIds = getLines(boardingPasses)
+    List<Integer> seatIds = calculateSeatIds(boardingPasses);
+    return getMissingSeatId(seatIds);
+  }
+
+  private List<Integer> calculateSeatIds(String boardingPasses) {
+    return getLines(boardingPasses)
         .stream()
         .mapToInt(this::calculateSeatId)
         .boxed()
         .collect(toList());
-
-    return getMissingSeatId(seatIds);
   }
 
   private int getMissingSeatId(List<Integer> seatIds) {
@@ -50,8 +48,8 @@ public class BinaryBoarding extends AbstractAdventSolution {
 
     for (int seatId : seatIds) {
       actualSeatIdsSum += seatId;
-      minSeatId = seatId < minSeatId ? seatId : minSeatId;
-      maxSeatId = seatId > maxSeatId ? seatId : maxSeatId;
+      minSeatId = Math.min(seatId, minSeatId);
+      maxSeatId = Math.max(seatId, maxSeatId);
     }
 
     int expectedSeatIdsSum = sumSeatsUpToId(maxSeatId) - sumSeatsUpToId(minSeatId - 1);
