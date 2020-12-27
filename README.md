@@ -25,7 +25,7 @@ Java solutions for [Advent of Code].
 | 16 | [Ticket Translation][2020 day 16] | [TicketTranslation.java](src/main/java/com/radupetre/adventofcode/year2020/day16/TicketTranslation.java) | ⏱️3.825 | ⏱️- |
 | 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) | ⏱️10.002 | ⏱️182.570 |
 | 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) | ⏱️5.360 | ⏱️- |
-| 19 | [?][2020 day 19] | [?](src/main/java/com/radupetre/adventofcode/year2020/day19/?.java) | ⏱️- | ⏱️- |
+| 19 | [Monster Messages][2020 day 19] | [MonsterMessages.java](src/main/java/com/radupetre/adventofcode/year2020/day19/MonsterMessages.java) | ⏱️70.582 | ⏱️395.738 |
 | 20 | [?][2020 day 20] | [?](src/main/java/com/radupetre/adventofcode/year2020/day20/?.java) | ⏱️- | ⏱️- |
 | 21 | [?][2020 day 21] | [?](src/main/java/com/radupetre/adventofcode/year2020/day21/?.java) | ⏱️- | ⏱️- |
 | 22 | [?][2020 day 22] | [?](src/main/java/com/radupetre/adventofcode/year2020/day22/?.java) | ⏱️- | ⏱️- |
