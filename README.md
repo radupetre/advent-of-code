@@ -26,7 +26,7 @@ Java solutions for [Advent of Code].
 | 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) | ⏱️10.002 | ⏱️182.570 |
 | 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) | ⏱️5.360 | ⏱️- |
 | 19 | [Monster Messages][2020 day 19] | [MonsterMessages.java](src/main/java/com/radupetre/adventofcode/year2020/day19/MonsterMessages.java) | ⏱️70.582 | ⏱️395.738 |
-| 20 | [Jurassic Jigsaw][2020 day 20] | [JurassicJigsaw](src/main/java/com/radupetre/adventofcode/year2020/day20/JurassicJigsaw.java) | ⏱️8.872 | ⏱️- |
+| 20 | [Jurassic Jigsaw][2020 day 20] | [JurassicJigsaw.java](src/main/java/com/radupetre/adventofcode/year2020/day20/JurassicJigsaw.java) | ⏱️8.872 | ⏱️- |
 | 21 | [?][2020 day 21] | [?](src/main/java/com/radupetre/adventofcode/year2020/day21/?.java) | ⏱️- | ⏱️- |
 | 22 | [?][2020 day 22] | [?](src/main/java/com/radupetre/adventofcode/year2020/day22/?.java) | ⏱️- | ⏱️- |
 | 23 | [?][2020 day 23] | [?](src/main/java/com/radupetre/adventofcode/year2020/day23/?.java) | ⏱️- | ⏱️- |
