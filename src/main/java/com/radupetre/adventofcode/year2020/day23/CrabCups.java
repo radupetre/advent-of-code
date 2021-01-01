@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +23,6 @@ import org.springframework.stereotype.Service;
 public class CrabCups extends AbstractAdventSolution {
 
   private static final Integer STARTING_COUP_NUMBER = 1;
-
   private static final int CHAR_ZERO = '0';
 
   @Override
@@ -36,7 +38,7 @@ public class CrabCups extends AbstractAdventSolution {
     Integer maxCoup = coupNumbers.stream().mapToInt(nr -> nr).max().getAsInt();
 
     executeMoves(firstCoup, coupsByNumber, maxCoup, 100);
-    return getCoupSequence(coupsByNumber);
+    return getCoupSequence(coupsByNumber, STARTING_COUP_NUMBER);
   }
 
   private List<Integer> readCoupNumbers(String input) {
@@ -105,12 +107,12 @@ public class CrabCups extends AbstractAdventSolution {
     return coupsByNumber.get(destinationCoupNumber);
   }
 
-  private Object getCoupSequence(Map<Integer, Coup> coupsByNumber) {
+  private Object getCoupSequence(Map<Integer, Coup> coupsByNumber, Integer startingCoupNumber) {
     // start with first coup after the one numbered 1.
-    Coup currentCoup = coupsByNumber.get(STARTING_COUP_NUMBER).nextCoup;
+    Coup currentCoup = coupsByNumber.get(startingCoupNumber).nextCoup;
     StringBuilder coupSequence = new StringBuilder();
 
-    while (currentCoup.number != STARTING_COUP_NUMBER) {
+    while (currentCoup.number != startingCoupNumber) {
       coupSequence.append(currentCoup.number);
       currentCoup = currentCoup.nextCoup;
     }
@@ -120,7 +122,31 @@ public class CrabCups extends AbstractAdventSolution {
 
   @Override
   public Object solvePart2(String input) {
-    return null;
+    List<Integer> coupNumbers = readCoupNumbers(input);
+    Integer maxCoup = 1_000_000;
+    coupNumbers = enrichWithCoupNumbersUpTo(coupNumbers, maxCoup);
+
+    Map<Integer, Coup> coupsByNumber = mapCoups(coupNumbers);
+    Coup firstCoup = coupsByNumber.get(coupNumbers.get(0));
+
+    executeMoves(firstCoup, coupsByNumber, maxCoup, 10_000_000);
+    return getCoupProduct(coupsByNumber, STARTING_COUP_NUMBER);
+  }
+
+  private List<Integer> enrichWithCoupNumbersUpTo(List<Integer> coupNumbers, Integer newMaxCoup) {
+    Integer oldMaxCoup = coupNumbers.stream().mapToInt(nr -> nr).max().getAsInt();
+
+    return Stream.concat(
+        coupNumbers.stream(),
+        IntStream.range(oldMaxCoup + 1, newMaxCoup + 1).mapToObj(nr -> nr)
+    ).collect(toList());
+  }
+
+  private Object getCoupProduct(Map<Integer, Coup> coupsByNumber, Integer startingCoupNumber) {
+    final Coup startingCoup = coupsByNumber.get(startingCoupNumber);
+    Integer nextCoupNumber = startingCoup.nextCoup.number;
+    Integer nextNextCoupNumber = startingCoup.nextCoup.nextCoup.number;
+    return (long)nextCoupNumber * nextNextCoupNumber;
   }
 }
 
