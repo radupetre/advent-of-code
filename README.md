@@ -30,7 +30,7 @@ Java solutions for [Advent of Code].
 | 21 | [?][2020 day 21] | [?](src/main/java/com/radupetre/adventofcode/year2020/day21/?.java) | ⏱️- | ⏱️- |
 | 22 | [Crab Combat][2020 day 22] | [CrabCombat.java](src/main/java/com/radupetre/adventofcode/year2020/day22/CrabCombat.java) | ⏱️0.982 | ⏱️324.078 |
 | 23 | [Crab Cups][2020 day 23] | [CrabCups.java](src/main/java/com/radupetre/adventofcode/year2020/day23/CrabCups.java) | ⏱️0.855 | ⏱️3680.587 |
-| 24 | [?][2020 day 24] | [?](src/main/java/com/radupetre/adventofcode/year2020/day24/?.java) | ⏱️- | ⏱️- |
+| 24 | [Lobby Layout][2020 day 24] | [LobbyLayout.java](src/main/java/com/radupetre/adventofcode/year2020/day24/LobbyLayout.java) | ⏱️3.561 | ⏱️733.114 |
 | 25 | [?][2020 day 25] | [?](src/main/java/com/radupetre/adventofcode/year2020/day25/?.java) | ⏱️- | ⏱️- |
 
 
