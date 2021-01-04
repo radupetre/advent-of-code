@@ -145,7 +145,7 @@ public class CrabCups extends AbstractAdventSolution {
     final Coup startingCoup = coupsByNumber.get(startingCoupNumber);
     Integer nextCoupNumber = startingCoup.nextCoup.number;
     Integer nextNextCoupNumber = startingCoup.nextCoup.nextCoup.number;
-    return (long)nextCoupNumber * nextNextCoupNumber;
+    return (long) nextCoupNumber * nextNextCoupNumber;
   }
 }
 
