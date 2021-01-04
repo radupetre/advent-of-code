@@ -6,7 +6,11 @@ import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +27,6 @@ public class TicketTranslation extends AbstractAdventSolution {
   }
 
   TicketNotes notes;
-  List<Ticket> validTickets = new ArrayList<>();
 
   @Override
   public Object solvePart1(String input) {
@@ -31,45 +34,19 @@ public class TicketTranslation extends AbstractAdventSolution {
     return calculateTicketErrorRate();
   }
 
-  @Override
-  public Object solvePart2(String input) {
-    notes = new TicketNotes(input);
-    return multiplyValuesOnOwnTicket();
-  }
-
   private int calculateTicketErrorRate() {
     final List<Range> consolidatedRanges = consolidateRanges(notes);
     int invalidFieldsSum = 0;
 
     for (Ticket ticket : notes.nearbyTickets) {
-      boolean isValidTicket = true;
       for (Integer fieldNumber : ticket.fields) {
         if (numberNotInRanges(fieldNumber, consolidatedRanges)) {
-          isValidTicket = false;
           invalidFieldsSum += fieldNumber;
         }
-      }
-      if (isValidTicket) {
-        validTickets.add(ticket);
       }
     }
 
     return invalidFieldsSum;
-  }
-
-  private int multiplyValuesOnOwnTicket() {
-    // TODO
-
-    return 0;
-  }
-
-  private boolean numberNotInRanges(int number, List<Range> ranges) {
-    for (Range range : ranges) {
-      if (range.low <= number && number <= range.high) {
-        return false;
-      }
-    }
-    return true;
   }
 
   private List<Range> consolidateRanges(TicketNotes notes) {
@@ -94,5 +71,102 @@ public class TicketTranslation extends AbstractAdventSolution {
 
     return consolidatedRanges;
   }
+
+  @Override
+  public Object solvePart2(String input) {
+    notes = new TicketNotes(input);
+    List<Ticket> validTickets = getValidTickets();
+    Map<String, Integer> attributeToKnownFieldsNumber = getAttributeToKnownFieldsNumber(
+        validTickets);
+
+    return multiplyValuesOnOwnTicketContaining("departure", attributeToKnownFieldsNumber);
+  }
+
+  private Map<String, Integer> getAttributeToKnownFieldsNumber(List<Ticket> validTickets) {
+    Map<String, Set<Integer>> attributeToPossibleFieldNumbers = new HashMap<>();
+    Map<String, Integer> attributeToKnownFieldsNumber = new HashMap<>();
+
+    for (Attribute attribute : notes.attributes) {
+      int fieldSize = notes.ownTicket.fields.size();
+      for (int fieldNumber = 0; fieldNumber < fieldSize; fieldNumber++) {
+
+        if (allFieldsInRange(fieldNumber, validTickets, attribute)) {
+          final Set<Integer> possibleFieldNumbers = attributeToPossibleFieldNumbers
+              .computeIfAbsent(attribute.name, k -> new HashSet<>());
+          possibleFieldNumbers.add(fieldNumber);
+        }
+      }
+    }
+
+    // stop once all attributes are resolved
+    while (attributeToKnownFieldsNumber.size() < attributeToPossibleFieldNumbers.size()) {
+      for (String attribute : attributeToPossibleFieldNumbers.keySet()) {
+        final Set<Integer> possibleFieldNumbers = attributeToPossibleFieldNumbers.get(attribute);
+
+        // attribute can only match this field number
+        if (possibleFieldNumbers.size() == 1) {
+          int knownFieldNumber = possibleFieldNumbers.iterator().next();
+          attributeToKnownFieldsNumber.put(attribute, knownFieldNumber);
+
+          // remove the known field number from other possibilities
+          attributeToPossibleFieldNumbers.values().forEach(
+              possibleFieldNumbersSet -> possibleFieldNumbersSet.remove(knownFieldNumber)
+          );
+        }
+      }
+    }
+
+    return attributeToKnownFieldsNumber;
+  }
+
+  private boolean allFieldsInRange(int fieldNumber, List<Ticket> validTickets,
+      Attribute attribute) {
+    for (Ticket ticket : validTickets) {
+      final Integer fieldValue = ticket.fields.get(fieldNumber);
+      if (numberNotInRanges(fieldValue, attribute.ranges)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private long multiplyValuesOnOwnTicketContaining(String attributeMatch,
+      Map<String, Integer> attributeToKnownFieldsNumber) {
+    return attributeToKnownFieldsNumber.keySet()
+        .stream()
+        .filter(attribute -> attribute.contains(attributeMatch))
+        .map(attributeToKnownFieldsNumber::get)
+        .mapToLong(notes.ownTicket.fields::get)
+        .reduce(1, (a, b) -> a * b);
+  }
+
+  private List<Ticket> getValidTickets() {
+    final List<Range> consolidatedRanges = consolidateRanges(notes);
+    List<Ticket> validTickets = new ArrayList<>();
+
+    for (Ticket ticket : notes.nearbyTickets) {
+      boolean isValidTicket = true;
+      for (Integer fieldNumber : ticket.fields) {
+        if (numberNotInRanges(fieldNumber, consolidatedRanges)) {
+          isValidTicket = false;
+        }
+      }
+      if (isValidTicket) {
+        validTickets.add(ticket);
+      }
+    }
+
+    return validTickets;
+  }
+
+  private boolean numberNotInRanges(int number, List<Range> ranges) {
+    for (Range range : ranges) {
+      if (range.low <= number && number <= range.high) {
+        return false;
+      }
+    }
+    return true;
+  }
+
 }
 
