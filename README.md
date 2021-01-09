@@ -24,7 +24,7 @@ Java solutions for [Advent of Code].
 | 15 | [Rambunctious Recitation][2020 day 15] | [RambunctiousRecitation.java](src/main/java/com/radupetre/adventofcode/year2020/day15/RambunctiousRecitation.java) | ⏱️0.571 | ⏱️4142.190 |
 | 16 | [Ticket Translation][2020 day 16] | [TicketTranslation.java](src/main/java/com/radupetre/adventofcode/year2020/day16/TicketTranslation.java) | ⏱️3.825 | ⏱️6.977 |
 | 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) | ⏱️10.002 | ⏱️182.570 |
-| 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) | ⏱️5.360 | ⏱️- |
+| 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) | ⏱️6.148 | ⏱️3.053 |
 | 19 | [Monster Messages][2020 day 19] | [MonsterMessages.java](src/main/java/com/radupetre/adventofcode/year2020/day19/MonsterMessages.java) | ⏱️70.582 | ⏱️395.738 |
 | 20 | [Jurassic Jigsaw][2020 day 20] | [JurassicJigsaw.java](src/main/java/com/radupetre/adventofcode/year2020/day20/JurassicJigsaw.java) | ⏱️8.872 | ⏱️- |
 | 21 | [Allergen Assessment][2020 day 21] | [AllergenAssessment.java](src/main/java/com/radupetre/adventofcode/year2020/day21/AllergenAssessment.java) | ⏱️2.251 | ⏱️1.208 |
