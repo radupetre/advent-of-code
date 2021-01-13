@@ -53,6 +53,7 @@ public class ComboBreaker extends AbstractAdventSolution {
 
   @Override
   public Object solvePart2(String input) {
+    // no part2
     return null;
   }
 }

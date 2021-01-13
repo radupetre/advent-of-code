@@ -26,7 +26,7 @@ Java solutions for [Advent of Code].
 | 17 | [Conway Cubes][2020 day 17] | [ConwayCubes.java](src/main/java/com/radupetre/adventofcode/year2020/day17/ConwayCubes.java) | ⏱️10.002 | ⏱️182.570 |
 | 18 | [Operation Order][2020 day 18] | [OperationOrder.java](src/main/java/com/radupetre/adventofcode/year2020/day18/OperationOrder.java) | ⏱️6.148 | ⏱️3.053 |
 | 19 | [Monster Messages][2020 day 19] | [MonsterMessages.java](src/main/java/com/radupetre/adventofcode/year2020/day19/MonsterMessages.java) | ⏱️70.582 | ⏱️395.738 |
-| 20 | [Jurassic Jigsaw][2020 day 20] | [JurassicJigsaw.java](src/main/java/com/radupetre/adventofcode/year2020/day20/JurassicJigsaw.java) | ⏱️8.872 | ⏱️- |
+| 20 | [Jurassic Jigsaw][2020 day 20] | [JurassicJigsaw.java](src/main/java/com/radupetre/adventofcode/year2020/day20/JurassicJigsaw.java) | ⏱️10.399 | ⏱️22.633 |
 | 21 | [Allergen Assessment][2020 day 21] | [AllergenAssessment.java](src/main/java/com/radupetre/adventofcode/year2020/day21/AllergenAssessment.java) | ⏱️2.251 | ⏱️1.208 |
 | 22 | [Crab Combat][2020 day 22] | [CrabCombat.java](src/main/java/com/radupetre/adventofcode/year2020/day22/CrabCombat.java) | ⏱️0.982 | ⏱️324.078 |
 | 23 | [Crab Cups][2020 day 23] | [CrabCups.java](src/main/java/com/radupetre/adventofcode/year2020/day23/CrabCups.java) | ⏱️0.855 | ⏱️3680.587 |

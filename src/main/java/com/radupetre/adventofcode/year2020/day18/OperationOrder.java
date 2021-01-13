@@ -8,7 +8,6 @@ import com.radupetre.adventofcode.solution.AbstractAdventSolution;
 import com.radupetre.adventofcode.solution.SolveContext;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.function.Function;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class OperationOrder extends AbstractAdventSolution {
   public SolveContext getSolveContext() {
     return new SolveContext(2020, 18);
   }
-  
+
   @Override
   public Object solvePart1(String input) {
     return getLines(input)
