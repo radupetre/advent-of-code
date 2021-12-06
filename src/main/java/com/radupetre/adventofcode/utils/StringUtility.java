@@ -28,6 +28,10 @@ public class StringUtility {
         .collect(toList());
   }
 
+  public static Stream<String> getBatchesAsStream(String text, String separator) {
+    return stream(text.split(separator));
+  }
+
   private static String[] splitLines(String text) {
     return text.split("\\r?\\n");
   }
