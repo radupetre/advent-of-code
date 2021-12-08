@@ -10,6 +10,7 @@ public class StringUtility {
 
   public static final String EMPTY_LINE = "\n\n";
   public static final String NEW_LINE = "\n";
+  public static final String PIPE = "\\|";
   public static final String COMMA = ",";
   public static final String SPACE = " ";
 
