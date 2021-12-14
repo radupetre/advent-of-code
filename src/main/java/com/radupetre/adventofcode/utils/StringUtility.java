@@ -13,6 +13,8 @@ public class StringUtility {
   public static final String PIPE = "\\|";
   public static final String COMMA = ",";
   public static final String SPACE = " ";
+  public static final String EQUALS = "=";
+  public static final String ARROW = "->";
 
 
   public static List<String> getLines(String text) {
