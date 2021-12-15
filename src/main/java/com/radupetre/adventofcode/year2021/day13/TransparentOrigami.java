@@ -3,6 +3,7 @@ package com.radupetre.adventofcode.year2021.day13;
 import static com.radupetre.adventofcode.utils.StringUtility.COMMA;
 import static com.radupetre.adventofcode.utils.StringUtility.EMPTY_LINE;
 import static com.radupetre.adventofcode.utils.StringUtility.EQUALS;
+import static com.radupetre.adventofcode.utils.StringUtility.NEW_LINE;
 import static com.radupetre.adventofcode.utils.StringUtility.getLines;
 import static com.radupetre.adventofcode.year2021.day13.FoldType.X_FOLD;
 import static com.radupetre.adventofcode.year2021.day13.FoldType.Y_FOLD;
@@ -102,6 +103,7 @@ public class TransparentOrigami extends AbstractAdventSolution {
           output.append(" ");
         }
       }
+      output.append(NEW_LINE);
     }
 
     return output.toString();

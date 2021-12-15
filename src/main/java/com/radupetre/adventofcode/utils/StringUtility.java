@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class StringUtility {
 
-  public static final String EMPTY_LINE = "\n\n";
+  public static final String EMPTY_LINE = "\\r?\\n\\r?\\n";
   public static final String NEW_LINE = "\n";
   public static final String PIPE = "\\|";
   public static final String COMMA = ",";
@@ -41,6 +41,10 @@ public class StringUtility {
 
   public static String cleanString(String toClean) {
     return toClean.replaceAll("\\p{C}", "");
+  }
+
+  public static String cleanCarriageReturn(String toClean) {
+    return toClean.replaceAll("\r", "");
   }
 
   public static String cleanSpaces(String toClean) {
