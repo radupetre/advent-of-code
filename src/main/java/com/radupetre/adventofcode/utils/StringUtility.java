@@ -12,6 +12,7 @@ public class StringUtility {
   public static final String NEW_LINE = "\n";
   public static final String PIPE = "\\|";
   public static final String COMMA = ",";
+  public static final String COLON = ":";
   public static final String SPACE = " ";
   public static final String EQUALS = "=";
   public static final String ARROW = "->";
@@ -49,5 +50,9 @@ public class StringUtility {
 
   public static String cleanSpaces(String toClean) {
     return toClean.replaceAll("\\s{2,}", " ").trim();
+  }
+
+  public static String keepDigits(String toClean) {
+    return toClean.replaceAll("[^\\d-]", " ");
   }
 }
