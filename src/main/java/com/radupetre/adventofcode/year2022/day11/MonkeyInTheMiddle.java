@@ -31,7 +31,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Log4j2
-public class Day11 extends AbstractAdventSolution {
+public class MonkeyInTheMiddle extends AbstractAdventSolution {
 
   @Override
   public SolveContext getSolveContext() {
